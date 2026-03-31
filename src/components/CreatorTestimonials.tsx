@@ -12,35 +12,21 @@ export default function CreatorTestimonials() {
         >
           Creator Testimonials
         </motion.h2>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-white p-6 rounded-3xl shadow-lg mb-8 flex items-center gap-4"
-        >
-          <img 
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQI7XG__Cny8EbPIE_PeyPuJwDsytjvSsBh6Zoq_e0GA2CmCdv2O0aktU&s=10" 
-            alt="CBC News: The National" 
-            className="w-16 h-16 rounded-full object-cover"
-            referrerPolicy="no-referrer"
-          />
-          <h3 className="text-2xl font-semibold">CBC News: The National</h3>
-        </motion.div>
-
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           className="aspect-video w-full rounded-3xl overflow-hidden shadow-2xl"
         >
-          <iframe
-            className="w-full h-full"
-            src="https://www.youtube.com/embed/phh0j_qWTLo"
-            title="Creator Testimonial"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+          <img
+            className="w-full h-full object-cover"
+            src="/testimonial-photo.png"
+            onError={(e) => {
+              e.currentTarget.src = "https://picsum.photos/seed/orbitx/800/450";
+            }}
+            alt="Creator Testimonial"
+            referrerPolicy="no-referrer"
+          />
         </motion.div>
       </div>
     </section>

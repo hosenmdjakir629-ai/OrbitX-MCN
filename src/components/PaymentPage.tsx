@@ -67,13 +67,34 @@ export default function PaymentPage({ joinFormData }: { joinFormData: JoinFormDa
 
   return (
     <section className="py-20 px-6 max-w-2xl mx-auto">
-      <motion.h2 
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600"
-      >
-        {t('completePayment')}
-      </motion.h2>
+      <div className="flex flex-col items-center mb-12">
+        <motion.img
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          src="https://lh3.googleusercontent.com/a-/ALV-UjWufNRZwo6-tyucp2_FHTKH_l4ALZbK_MxsZQo0FyUn5wVw6gI=s360-w360-h360"
+          alt="OrbitX Logo"
+          className="h-16 md:h-20 mb-4 object-contain rounded-full"
+          referrerPolicy="no-referrer"
+          onError={(e) => {
+            e.currentTarget.style.display = 'none';
+          }}
+        />
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.1 }}
+          className="text-lg font-semibold text-zinc-600 mb-6"
+        >
+          OrbitX Global Payment Gateway
+        </motion.p>
+        <motion.h2 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="text-4xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600"
+        >
+          {t('completePayment')}
+        </motion.h2>
+      </div>
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
