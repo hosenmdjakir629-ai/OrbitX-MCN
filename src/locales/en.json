@@ -1,0 +1,23 @@
+{
+  "completePayment": "Complete Your Payment",
+  "total": "Total: $50 (BDT Equivalent)",
+  "bkash": "bKash",
+  "nagad": "Nagad",
+  "rocket": "Rocket",
+  "binance": "Binance (USDT BEP20)",
+  "sendTo": "Send Money to this {{method}} number:",
+  "sendToBinance": "Send Withdraw to this BINANCE Address:",
+  "transactionId": "Transaction ID",
+  "senderNumber": "Your Sender Number",
+  "submit": "Submit Transaction Details",
+  "paymentSubmitted": "Payment Submitted!",
+  "verificationMessage": "We have received your transaction details. Our team will verify it shortly and activate your account.",
+  "chatWhatsApp": "Chat with us on WhatsApp",
+  "payViaBkash": "Pay via bKash Link",
+  "hero": {
+    "title": "Join OrbitX MCN & Grow Your YouTube Channel Faster",
+    "subtitle": "Get brand deals, copyright protection, premium resources, and expert growth support.",
+    "features": ["Brand Deals", "Copyright Protection", "Premium Resources", "Growth Strategy"],
+    "joinButton": "Join OrbitX MCN"
+  }
+}

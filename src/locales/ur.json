@@ -1,0 +1,23 @@
+{
+  "completePayment": "اپنی ادائیگی مکمل کریں",
+  "total": "کل: $50 (BDT کے مساوی)",
+  "bkash": "bKash",
+  "nagad": "Nagad",
+  "rocket": "Rocket",
+  "binance": "Binance (USDT BEP20)",
+  "sendTo": "اس {{method}} نمبر پر Send Money کریں:",
+  "sendToBinance": "اس BINANCE ایڈریس پر Withdraw بھیجیں:",
+  "transactionId": "ٹرانزیکشن آئی ڈی",
+  "senderNumber": "آپ کا بھیجنے والا نمبر",
+  "submit": "ٹرانزیکشن کی تفصیلات جمع کروائیں",
+  "paymentSubmitted": "ادائیگی جمع کر دی گئی!",
+  "verificationMessage": "ہمیں آپ کی ٹرانزیکشن کی تفصیلات موصول ہو گئی ہیں۔ ہماری ٹیم جلد ہی اس کی تصدیق کرے گی اور آپ کا اکاؤنٹ فعال کر دے گی۔",
+  "chatWhatsApp": "واٹس ایپ پر ہمارے ساتھ چیٹ کریں",
+  "payViaBkash": "bKash لنک کے ذریعے ادائیگی کریں",
+  "hero": {
+    "title": "OrbitX MCN میں شامل ہوں اور اپنے YouTube چینل کو تیزی سے بڑھائیں",
+    "subtitle": "برانڈ ڈیلز، کاپی رائٹ پروٹیکشن، پریمیم وسائل، اور ماہرانہ ترقی کی مدد حاصل کریں۔",
+    "features": ["برانڈ ڈیلز", "کاپی رائٹ پروٹیکشن", "پریمیم وسائل", "ترقی کی حکمت عملی"],
+    "joinButton": "OrbitX MCN میں شامل ہوں"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "completePayment": "お支払い手続きを完了してください",
+  "total": "合計: $50 (BDT相当)",
+  "bkash": "bKash",
+  "nagad": "Nagad",
+  "rocket": "Rocket",
+  "binance": "Binance (USDT BEP20)",
+  "sendTo": "この {{method}} 番号に送金 (Send Money) してください:",
+  "sendToBinance": "この BINANCE アドレスに Withdraw を送金してください:",
+  "transactionId": "トランザクションID",
+  "senderNumber": "送信者番号",
+  "submit": "トランザクション詳細を送信",
+  "paymentSubmitted": "支払いが送信されました！",
+  "verificationMessage": "トランザクションの詳細を受け取りました。チームが確認次第、アカウントを有効化します。",
+  "chatWhatsApp": "WhatsAppでチャットする",
+  "payViaBkash": "bKashリンクで支払う",
+  "hero": {
+    "title": "OrbitX MCNに参加して、YouTubeチャンネルを急速に成長させよう",
+    "subtitle": "ブランド案件、著作権保護、プレミアムリソース、専門的な成長サポートを受けられます。",
+    "features": ["ブランド案件", "著作権保護", "プレミアムリソース", "成長戦略"],
+    "joinButton": "OrbitX MCNに参加する"
+  }
+}

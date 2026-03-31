@@ -1,0 +1,23 @@
+{
+  "completePayment": "完成您的付款",
+  "total": "总计: $50 (BDT等值)",
+  "bkash": "bKash",
+  "nagad": "Nagad",
+  "rocket": "Rocket",
+  "binance": "Binance (USDT BEP20)",
+  "sendTo": "向此 {{method}} 号码发送资金 (Send Money):",
+  "sendToBinance": "向此 BINANCE 地址发送 Withdraw:",
+  "transactionId": "交易ID",
+  "senderNumber": "您的发送者号码",
+  "submit": "提交交易详情",
+  "paymentSubmitted": "付款已提交！",
+  "verificationMessage": "我们已收到您的交易详情。我们的团队将尽快核实并激活您的账户。",
+  "chatWhatsApp": "在WhatsApp上与我们聊天",
+  "payViaBkash": "通过bKash链接支付",
+  "hero": {
+    "title": "加入OrbitX MCN，加速您的YouTube频道成长",
+    "subtitle": "获得品牌交易、版权保护、优质资源和专家增长支持。",
+    "features": ["品牌交易", "版权保护", "优质资源", "增长策略"],
+    "joinButton": "加入OrbitX MCN"
+  }
+}
