@@ -33,7 +33,7 @@ export default function RequirementsPricing() {
           className="bg-gradient-to-br from-emerald-500 to-teal-600 p-10 rounded-3xl text-white shadow-xl shadow-emerald-900/20"
         >
           <h2 className="text-3xl font-bold mb-8">OrbitX MCN Creator Plan</h2>
-          <p className="text-5xl font-bold mb-6">$50 <span className="text-xl font-normal text-emerald-100">One Time</span></p>
+          <p className="text-5xl font-bold mb-6">Lifetime <span className="text-xl font-normal text-emerald-100">Free Access</span></p>
           <ul className="space-y-4 text-emerald-50">
             {['Brand Deal Opportunities', 'Content ID Protection', 'Premium Resources', 'YouTube Growth Strategy', 'Creator Collaboration', 'Fast Payment System'].map((feat, i) => (
               <motion.li 

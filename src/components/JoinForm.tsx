@@ -2,7 +2,7 @@ import { useState, FormEvent } from 'react';
 import { motion } from 'motion/react';
 import { JoinFormData } from '../types';
 
-export default function JoinForm({ onSubmitted }: { onSubmitted: (data: JoinFormData) => void }) {
+export default function JoinForm() {
   const [formData, setFormData] = useState<JoinFormData>({
     fullName: '',
     channelName: '',
@@ -13,6 +13,7 @@ export default function JoinForm({ onSubmitted }: { onSubmitted: (data: JoinForm
   });
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [error, setError] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
   const validateField = (key: string, value: string) => {
     if (!value) return 'This field is required.';
@@ -44,10 +45,47 @@ export default function JoinForm({ onSubmitted }: { onSubmitted: (data: JoinForm
     } else {
       setFieldErrors({});
       setError('');
-      onSubmitted(formData);
+      
+      const message = `New Creator Application!
+      
+      --- Application Details ---
+      Name: ${formData.fullName}
+      Channel: ${formData.channelName}
+      Link: ${formData.youtubeLink}
+      Subscribers: ${formData.subscribers}
+      Email: ${formData.email}
+      Country: ${formData.country}`;
+      
+      const whatsappUrl = `https://wa.me/8801927694437?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+
+      setSubmitted(true);
       setFormData({ fullName: '', channelName: '', youtubeLink: '', subscribers: '', email: '', country: '' });
     }
   };
+
+  if (submitted) {
+    return (
+      <section id="join-form" className="py-20 px-6 max-w-2xl mx-auto text-center">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="bg-white p-12 rounded-3xl shadow-xl border border-zinc-100"
+        >
+          <h2 className="text-3xl font-bold mb-4 text-emerald-600">Application Submitted!</h2>
+          <p className="text-zinc-600 mb-8">We have received your application. Our team will review it and get back to you soon.</p>
+          <a 
+            href="https://wa.me/8801927694437" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-block bg-green-500 text-white font-semibold px-8 py-4 rounded-2xl hover:bg-green-600 transition-all"
+          >
+            Chat on WhatsApp
+          </a>
+        </motion.div>
+      </section>
+    );
+  }
 
   const inputFields = [
     { type: 'text', placeholder: 'Full Name', key: 'fullName' },

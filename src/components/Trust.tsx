@@ -56,8 +56,8 @@ export default function Trust() {
           whileHover={{ y: -10 }}
           className="bg-zinc-900 p-8 rounded-3xl border border-zinc-800 hover:border-yellow-500 transition-colors"
         >
-          <p className="text-xl font-bold mb-2 text-yellow-400">Limited Offer</p>
-          <span className="text-zinc-400">First 100 Creators Join for $50</span>
+          <p className="text-xl font-bold mb-2 text-yellow-400">Lifetime Free</p>
+          <span className="text-zinc-400">All YouTube Channel Creators Join for Free</span>
         </motion.div>
       </div>
 
