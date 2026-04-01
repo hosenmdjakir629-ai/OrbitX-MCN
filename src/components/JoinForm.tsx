@@ -16,9 +16,50 @@ export default function JoinForm() {
   const [submitted, setSubmitted] = useState(false);
 
   const validateField = (key: string, value: string) => {
-    if (!value) return 'This field is required.';
-    if (key === 'email' && !value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) return 'Please enter a valid email address.';
-    if (key === 'youtubeLink' && !value.match(/^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+/)) return 'Please enter a valid YouTube channel link.';
+    if (!value) {
+      if (key === 'country') return 'Please select your country from the list.';
+      return 'This field is required.';
+    }
+    
+    if (key === 'fullName' && value.trim().length < 2) {
+      return 'Please enter your full name (at least 2 characters).';
+    }
+    
+    if (key === 'channelName' && value.trim().length < 2) {
+      return 'Channel name must be at least 2 characters long.';
+    }
+    
+    if (key === 'email') {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(value)) {
+        return 'Please enter a valid email address (e.g., name@example.com).';
+      }
+    }
+    
+    if (key === 'youtubeLink') {
+      if (!value.startsWith('http://') && !value.startsWith('https://')) {
+        return 'Link must start with http:// or https://';
+      }
+      try {
+        const url = new URL(value);
+        if (!url.hostname.includes('youtube.com') && !url.hostname.includes('youtu.be')) {
+          return 'Link must be a valid YouTube domain (youtube.com or youtu.be).';
+        }
+        if (url.pathname === '/' || url.pathname === '') {
+          return 'Please provide a link to your specific channel or video, not just the homepage.';
+        }
+      } catch {
+        return 'The link format is invalid. Please copy and paste the exact URL.';
+      }
+    }
+    
+    if (key === 'subscribers') {
+      const num = parseInt(value, 10);
+      if (isNaN(num) || num < 0) {
+        return 'Please enter a valid positive number for subscribers.';
+      }
+    }
+    
     return '';
   };
 

@@ -2,6 +2,7 @@ import Hero from './components/Hero';
 import Features from './components/Features';
 import CreatorTestimonials from './components/CreatorTestimonials';
 import Earnings from './components/Earnings';
+import CopyrightProtection from './components/CopyrightProtection';
 import RequirementsPricing from './components/RequirementsPricing';
 import JoinForm from './components/JoinForm';
 import FAQ from './components/FAQ';
@@ -18,6 +19,7 @@ export default function App() {
       <Features />
       <CreatorTestimonials />
       <Earnings />
+      <CopyrightProtection />
       <RequirementsPricing />
       <FAQ />
       <JoinForm />
