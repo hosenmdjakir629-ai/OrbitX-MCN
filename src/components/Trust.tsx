@@ -1,12 +1,53 @@
 import { useCallback, useEffect, useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, animate, useMotionValue, useTransform } from 'motion/react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+function AnimatedCounter({ value, label, formatter, colorClass }: { value: number, label: string, formatter: (val: number) => string, colorClass: string }) {
+  const count = useMotionValue(0);
+  const display = useTransform(count, (latest) => formatter(latest));
+
+  useEffect(() => {
+    if (value > 0) {
+      const controls = animate(count, value, { duration: 2.5, ease: "easeOut" });
+      return controls.stop;
+    }
+  }, [value, count]);
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      whileHover={{ y: -10 }}
+      className={`bg-zinc-900 p-8 rounded-3xl border border-zinc-800 transition-colors hover:border-${colorClass.split('-')[1]}-500`}
+    >
+      <motion.p className={`text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${colorClass} mb-2`}>
+        {display}
+      </motion.p>
+      <span className="text-zinc-400 text-lg font-medium">{label}</span>
+    </motion.div>
+  );
+}
 
 export default function Trust() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+  const [liveStats, setLiveStats] = useState({ activeChannels: 0, totalViews: 0 });
+
+  useEffect(() => {
+    // Mock API call to fetch live stats
+    const fetchStats = async () => {
+      // Simulate network delay
+      await new Promise(resolve => setTimeout(resolve, 1200));
+      setLiveStats({
+        activeChannels: 138,
+        totalViews: 10000000 // 10 Million
+      });
+    };
+    fetchStats();
+  }, []);
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
@@ -44,40 +85,23 @@ export default function Trust() {
       >
         Trusted by Creators
       </motion.h2>
-      <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-20">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          whileHover={{ y: -10 }}
-          className="bg-zinc-900 p-8 rounded-3xl border border-zinc-800 hover:border-emerald-500 transition-colors"
-        >
-          <p className="italic text-zinc-400 mb-4">“OrbitX MCN helped me get my first brand deal worth $500.”</p>
-          <span className="font-semibold text-emerald-400">Creator Success Story</span>
-        </motion.div>
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          whileHover={{ y: -10 }}
-          className="bg-zinc-900 p-8 rounded-3xl border border-zinc-800 hover:border-purple-500 transition-colors"
-        >
-          <p className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400 mb-2">137</p>
-          <span className="text-zinc-400">Creators Already Joined</span>
-        </motion.div>
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          whileHover={{ y: -10 }}
-          className="bg-zinc-900 p-8 rounded-3xl border border-zinc-800 hover:border-yellow-500 transition-colors"
-        >
-          <p className="text-xl font-bold mb-2 text-yellow-400">Lifetime Free</p>
-          <span className="text-zinc-400">All YouTube Channel Creators Join for Free</span>
-        </motion.div>
+      <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-20">
+        <AnimatedCounter 
+          value={liveStats.activeChannels} 
+          label="Active Channels" 
+          formatter={(val) => Math.round(val).toLocaleString() + '+'}
+          colorClass="from-purple-400 to-blue-400"
+        />
+        <AnimatedCounter 
+          value={liveStats.totalViews} 
+          label="Total Views Generated" 
+          formatter={(val) => {
+            if (val >= 1000000000) return (val / 1000000000).toFixed(1) + 'B+';
+            if (val >= 1000000) return (val / 1000000).toFixed(1) + 'M+';
+            return Math.round(val).toLocaleString() + '+';
+          }}
+          colorClass="from-emerald-400 to-cyan-400"
+        />
       </div>
 
       <motion.h3 

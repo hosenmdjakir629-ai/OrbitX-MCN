@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
+import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   const { t } = useTranslation();
@@ -93,11 +94,26 @@ export default function Hero() {
         </motion.div>
         <motion.a 
           href="#join-form"
-          whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 255, 255, 0.3)" }}
-          whileTap={{ scale: 0.98 }}
-          className="bg-white text-purple-900 font-bold px-8 py-4 rounded-xl text-lg flex items-center justify-center gap-2 mx-auto transition-all"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ 
+            opacity: 1, 
+            y: 0,
+            boxShadow: ["0 0 0px rgba(250, 204, 21, 0)", "0 0 20px rgba(250, 204, 21, 0.5)", "0 0 0px rgba(250, 204, 21, 0)"]
+          }}
+          transition={{ 
+            opacity: { delay: 0.6 },
+            y: { delay: 0.6 },
+            boxShadow: { duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1 }
+          }}
+          whileHover={{ 
+            scale: 1.05, 
+            boxShadow: "0 0 30px rgba(250, 204, 21, 0.8)" 
+          }}
+          whileTap={{ scale: 0.95 }}
+          className="bg-gradient-to-r from-yellow-400 via-amber-400 to-orange-500 text-zinc-900 font-extrabold px-10 py-5 rounded-2xl text-xl inline-flex items-center justify-center gap-3 mx-auto transition-all group"
         >
           {t('hero.joinButton')}
+          <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
         </motion.a>
       </div>
     </section>

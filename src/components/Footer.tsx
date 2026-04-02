@@ -1,5 +1,6 @@
 import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -28,9 +29,15 @@ export default function Footer() {
             <Youtube size={20} />
           </a>
         </div>
-        <a href="#" className="text-zinc-400 hover:text-white text-sm transition-colors">
-          Privacy Policy
-        </a>
+        <div className="flex gap-4 items-center">
+          <Link to="/terms" className="text-zinc-400 hover:text-white text-sm transition-colors">
+            Terms & Conditions
+          </Link>
+          <span className="text-zinc-700">•</span>
+          <a href="#" className="text-zinc-400 hover:text-white text-sm transition-colors">
+            Privacy Policy
+          </a>
+        </div>
       </motion.div>
     </footer>
   );

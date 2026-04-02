@@ -6,13 +6,54 @@ const data = [
     name: 'Without MCN',
     'Total Revenue': 1000,
     'Creator Take-home': 1000,
+    breakdown: [
+      { label: 'Base AdSense', value: 1000 },
+      { label: 'Brand Deals & Sponsorships', value: 0 },
+      { label: 'MCN Fee', value: 0 },
+      { label: 'Creator Take-home', value: 1000, highlight: true }
+    ]
   },
   {
     name: 'With OrbitX MCN',
     'Total Revenue': 1500,
     'Creator Take-home': 900,
+    breakdown: [
+      { label: 'Base AdSense', value: 1000 },
+      { label: 'OrbitX Growth Boost (50%)', value: 500 },
+      { label: 'Gross Revenue', value: 1500, highlight: true },
+      { label: 'MCN Fee (40%)', value: -600 },
+      { label: 'Creator Take-home', value: 900, highlight: true }
+    ]
   },
 ];
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const CustomTooltip = ({ active, payload, label }: any) => {
+  if (active && payload && payload.length) {
+    const chartData = payload[0].payload;
+    return (
+      <div className="bg-zinc-900 border border-zinc-700 p-5 rounded-xl shadow-2xl min-w-[250px]">
+        <h4 className="font-bold text-white mb-3 border-b border-zinc-800 pb-2">{label}</h4>
+        <div className="space-y-2 text-sm">
+          {chartData.breakdown.map((item: { label: string; value: number; highlight?: boolean }, idx: number) => (
+            <div 
+              key={idx} 
+              className={`flex justify-between gap-6 ${
+                item.highlight ? 'font-bold text-white pt-2 mt-2 border-t border-zinc-800' : 'text-zinc-400'
+              }`}
+            >
+              <span>{item.label}</span>
+              <span className={item.value < 0 ? 'text-red-400' : item.highlight ? 'text-emerald-400' : 'text-white'}>
+                {item.value < 0 ? '-' : ''}${Math.abs(item.value)}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+  return null;
+};
 
 export default function Earnings() {
   return (
@@ -65,11 +106,7 @@ export default function Earnings() {
             <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
               <XAxis dataKey="name" stroke="#a1a1aa" tick={{ fill: '#a1a1aa' }} />
               <YAxis stroke="#a1a1aa" tickFormatter={(value) => `$${value}`} tick={{ fill: '#a1a1aa' }} />
-              <Tooltip 
-                cursor={{ fill: '#27272a' }}
-                contentStyle={{ backgroundColor: '#18181b', border: '1px solid #3f3f46', borderRadius: '12px', color: '#fff' }}
-                itemStyle={{ color: '#e4e4e7' }}
-              />
+              <Tooltip content={<CustomTooltip />} cursor={{ fill: '#27272a' }} />
               <Legend wrapperStyle={{ paddingTop: '20px' }} />
               <Bar dataKey="Total Revenue" fill="#52525b" radius={[6, 6, 0, 0]} />
               <Bar dataKey="Creator Take-home" fill="#10b981" radius={[6, 6, 0, 0]} />

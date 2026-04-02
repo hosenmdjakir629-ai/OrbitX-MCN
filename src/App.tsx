@@ -1,39 +1,26 @@
-import Hero from './components/Hero';
-import Partners from './components/Partners';
-import NetworkPartners from './components/NetworkPartners';
-import Features from './components/Features';
-import PlatformTools from './components/PlatformTools';
-import AITools from './components/AITools';
-import CreatorTestimonials from './components/CreatorTestimonials';
-import Earnings from './components/Earnings';
-import CopyrightProtection from './components/CopyrightProtection';
-import RequirementsPricing from './components/RequirementsPricing';
-import JoinForm from './components/JoinForm';
-import FAQ from './components/FAQ';
-import Trust from './components/Trust';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import TermsAndConditions from './components/TermsAndConditions';
 import ScrollToTop from './components/ScrollToTop';
+import CookieConsent from './components/CookieConsent';
 import Footer from './components/Footer';
 import LanguageSwitcher from './components/LanguageSwitcher';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <LanguageSwitcher />
-      <Hero />
-      <Partners />
-      <NetworkPartners />
-      <Features />
-      <PlatformTools />
-      <AITools />
-      <CreatorTestimonials />
-      <Earnings />
-      <CopyrightProtection />
-      <RequirementsPricing />
-      <FAQ />
-      <JoinForm />
-      <Trust />
-      <ScrollToTop />
-      <Footer />
-    </div>
+    <Router>
+      <div className="min-h-screen bg-white flex flex-col">
+        <LanguageSwitcher />
+        <div className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/terms" element={<TermsAndConditions />} />
+          </Routes>
+        </div>
+        <ScrollToTop />
+        <Footer />
+        <CookieConsent />
+      </div>
+    </Router>
   );
 }

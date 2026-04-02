@@ -24,6 +24,10 @@ const networkPartners = [
   {
     name: 'Network Partner',
     logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxJtFvARcNInByoDWuBraW92jug2NIfcVBqTR7aHJ_6g&s=10',
+  },
+  {
+    name: 'Hashtag Network',
+    logo: 'https://www.hashtagnetwork.net/assets/files/hashtag-network-logo.png',
   }
 ];
 
