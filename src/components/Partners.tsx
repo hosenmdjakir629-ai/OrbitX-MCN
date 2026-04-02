@@ -12,6 +12,22 @@ const partners = [
   {
     name: 'Google Certified Partner',
     logo: 'https://theseoptimist.net/wp-content/uploads/2018/04/Google-certified-partner-badge.png',
+  },
+  {
+    name: 'ISO 9001:2015 Certified',
+    logo: 'https://validmfg.com/wp-content/uploads/valid-iso-9001-2015-certification.jpg',
+  },
+  {
+    name: 'Certification',
+    logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9mOgoB4kk3avZOJbbjS3eUcq8e0eFQuex31YmWh-AfkAEZGUrcVEYqlk&s=10',
+  },
+  {
+    name: 'YouTube Certified',
+    logo: 'https://e8y9s4x2.delivery.rocketcdn.me/wp-content/uploads/2023/01/Youtube-Certified.png',
+  },
+  {
+    name: 'Credly Certification',
+    logo: 'https://images.credly.com/images/644368a1-1c75-4e63-bf52-3e366807f213/twitter_thumb_201604_image.png',
   }
 ];
 
@@ -20,7 +36,7 @@ export default function Partners() {
     <section className="py-12 bg-white border-b border-zinc-100">
       <div className="max-w-6xl mx-auto px-6">
         <p className="text-center text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-8">
-          Official Platform Partners
+          Official Platform Partners & Certifications
         </p>
         <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24">
           {partners.map((partner, index) => (

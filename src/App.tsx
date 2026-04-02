@@ -1,5 +1,6 @@
 import Hero from './components/Hero';
 import Partners from './components/Partners';
+import NetworkPartners from './components/NetworkPartners';
 import Features from './components/Features';
 import PlatformTools from './components/PlatformTools';
 import AITools from './components/AITools';
@@ -20,6 +21,7 @@ export default function App() {
       <LanguageSwitcher />
       <Hero />
       <Partners />
+      <NetworkPartners />
       <Features />
       <PlatformTools />
       <AITools />
