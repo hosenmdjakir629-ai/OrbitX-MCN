@@ -15,7 +15,7 @@ const paymentPartners = [
   },
   {
     name: 'Binance',
-    logo: 'https://download.logo.wine/logo/Binance/Binance-Logo.wine.png',
+    logo: 'https://www.logo.wine/a/logo/Binance/Binance-Vertical2-Dark-Background-Logo.wine.svg',
   },
   {
     name: 'PayPal',
