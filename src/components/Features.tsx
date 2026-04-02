@@ -14,7 +14,14 @@ export default function Features() {
   return (
     <section className="py-20 px-6 bg-zinc-50">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-16 tracking-tight">Why Creators Choose OrbitX MCN</h2>
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl font-bold text-center mb-16 tracking-tight"
+        >
+          Why Creators Choose OrbitX MCN
+        </motion.h2>
         <div className="grid md:grid-cols-3 gap-8">
           {features.map((f, i) => (
             <motion.div 

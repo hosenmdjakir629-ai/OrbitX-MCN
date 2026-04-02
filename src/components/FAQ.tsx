@@ -18,6 +18,18 @@ const faqs = [
   {
     question: "Can I still manage my own brand deals?",
     answer: "Absolutely. We work with you to augment your efforts, not replace them. We can handle the outreach and negotiation for deals you don't have time for, or provide support for deals you've already secured."
+  },
+  {
+    question: "Do I keep full ownership of my channel and content?",
+    answer: "100%. You retain full creative control and ownership of your channel and all the content you produce. We are here to support and amplify your work, not take it over."
+  },
+  {
+    question: "Am I locked into a long-term contract?",
+    answer: "No, we offer flexible agreements. We believe in earning your partnership every month, so you aren't locked into restrictive, multi-year contracts."
+  },
+  {
+    question: "How and when do I get paid?",
+    answer: "We process payments monthly via bank transfer, PayPal, or crypto, depending on your preference. Our transparent dashboard lets you track your earnings and upcoming payouts in real-time."
   }
 ];
 
@@ -26,7 +38,14 @@ export default function FAQ() {
 
   return (
     <section className="py-20 px-6 max-w-3xl mx-auto">
-      <h2 className="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600">Frequently Asked Questions</h2>
+      <motion.h2 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600"
+      >
+        Frequently Asked Questions
+      </motion.h2>
       <div className="space-y-4">
         {faqs.map((faq, index) => (
           <motion.div 

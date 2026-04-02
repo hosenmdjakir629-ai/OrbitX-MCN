@@ -36,9 +36,20 @@ export default function Trust() {
 
   return (
     <section className="py-20 px-6 bg-zinc-950 text-white text-center">
-      <h2 className="text-4xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400">Trusted by Creators</h2>
+      <motion.h2 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-4xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400"
+      >
+        Trusted by Creators
+      </motion.h2>
       <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-20">
         <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
           whileHover={{ y: -10 }}
           className="bg-zinc-900 p-8 rounded-3xl border border-zinc-800 hover:border-emerald-500 transition-colors"
         >
@@ -46,6 +57,10 @@ export default function Trust() {
           <span className="font-semibold text-emerald-400">Creator Success Story</span>
         </motion.div>
         <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
           whileHover={{ y: -10 }}
           className="bg-zinc-900 p-8 rounded-3xl border border-zinc-800 hover:border-purple-500 transition-colors"
         >
@@ -53,6 +68,10 @@ export default function Trust() {
           <span className="text-zinc-400">Creators Already Joined</span>
         </motion.div>
         <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
           whileHover={{ y: -10 }}
           className="bg-zinc-900 p-8 rounded-3xl border border-zinc-800 hover:border-yellow-500 transition-colors"
         >
@@ -61,7 +80,14 @@ export default function Trust() {
         </motion.div>
       </div>
 
-      <h3 className="text-3xl font-bold mb-12">Creator Testimonials</h3>
+      <motion.h3 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-3xl font-bold mb-12"
+      >
+        Creator Testimonials
+      </motion.h3>
       <div className="relative max-w-6xl mx-auto px-12">
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex gap-8">

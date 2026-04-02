@@ -1,9 +1,15 @@
 import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
+import { motion } from 'motion/react';
 
 export default function Footer() {
   return (
-    <footer className="bg-zinc-950 text-white py-12 px-6 border-t border-zinc-800">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+    <footer className="bg-zinc-950 text-white py-12 px-6 border-t border-zinc-800 overflow-hidden">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8"
+      >
         <div className="text-center md:text-left">
           <p className="font-bold text-xl tracking-tighter mb-2 bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400">OrbitX MCN</p>
           <p className="text-zinc-500 text-sm">© 2026 OrbitX MCN. All rights reserved.</p>
@@ -25,7 +31,7 @@ export default function Footer() {
         <a href="#" className="text-zinc-400 hover:text-white text-sm transition-colors">
           Privacy Policy
         </a>
-      </div>
+      </motion.div>
     </footer>
   );
 }

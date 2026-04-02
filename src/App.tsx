@@ -1,5 +1,7 @@
 import Hero from './components/Hero';
 import Features from './components/Features';
+import PlatformTools from './components/PlatformTools';
+import AITools from './components/AITools';
 import CreatorTestimonials from './components/CreatorTestimonials';
 import Earnings from './components/Earnings';
 import CopyrightProtection from './components/CopyrightProtection';
@@ -17,6 +19,8 @@ export default function App() {
       <LanguageSwitcher />
       <Hero />
       <Features />
+      <PlatformTools />
+      <AITools />
       <CreatorTestimonials />
       <Earnings />
       <CopyrightProtection />
