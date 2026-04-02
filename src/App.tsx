@@ -1,4 +1,5 @@
 import Hero from './components/Hero';
+import Partners from './components/Partners';
 import Features from './components/Features';
 import PlatformTools from './components/PlatformTools';
 import AITools from './components/AITools';
@@ -18,6 +19,7 @@ export default function App() {
     <div className="min-h-screen bg-white">
       <LanguageSwitcher />
       <Hero />
+      <Partners />
       <Features />
       <PlatformTools />
       <AITools />
