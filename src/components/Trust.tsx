@@ -9,7 +9,7 @@ function AnimatedCounter({ value, label, formatter, colorClass }: { value: numbe
 
   useEffect(() => {
     if (value > 0) {
-      const controls = animate(count, value, { duration: 2.5, ease: "easeOut" });
+      const controls = animate(count, value, { duration: 2.5 });
       return controls.stop;
     }
   }, [value, count]);

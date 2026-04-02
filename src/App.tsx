@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
+import PaymentPage from './pages/PaymentPage';
 import TermsAndConditions from './components/TermsAndConditions';
 import ScrollToTop from './components/ScrollToTop';
 import CookieConsent from './components/CookieConsent';
@@ -14,6 +15,7 @@ export default function App() {
         <div className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/payment" element={<PaymentPage />} />
             <Route path="/terms" element={<TermsAndConditions />} />
           </Routes>
         </div>

@@ -10,12 +10,12 @@ const containerVariants = {
 
 const itemVariantsLeft = {
   hidden: { opacity: 0, x: -10 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
 };
 
 const itemVariantsRight = {
   hidden: { opacity: 0, x: 10 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
 };
 
 export default function RequirementsPricing() {
@@ -56,7 +56,7 @@ export default function RequirementsPricing() {
           className="bg-gradient-to-br from-emerald-500 to-teal-600 p-10 rounded-3xl text-white shadow-xl shadow-emerald-900/20"
         >
           <h2 className="text-3xl font-bold mb-8">OrbitX MCN Creator Plan</h2>
-          <p className="text-5xl font-bold mb-6">Lifetime <span className="text-xl font-normal text-emerald-100">Free Access</span></p>
+          <p className="text-5xl font-bold mb-6">$100 <span className="text-xl font-normal text-emerald-100">Join Fee</span></p>
           <motion.ul 
             variants={containerVariants}
             initial="hidden"

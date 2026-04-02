@@ -1,4 +1,5 @@
 import { useState, FormEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { JoinFormData } from '../types';
 
@@ -16,21 +17,23 @@ const itemVariants = {
 };
 
 export default function JoinForm() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<JoinFormData>({
     fullName: '',
     channelName: '',
     youtubeLink: '',
     subscribers: '',
     email: '',
-    country: ''
+    country: '',
+    contentNiche: ''
   });
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [error, setError] = useState('');
-  const [submitted, setSubmitted] = useState(false);
 
   const validateField = (key: string, value: string) => {
     if (!value) {
       if (key === 'country') return 'Please select your country from the list.';
+      if (key === 'contentNiche') return 'Please select your primary content niche.';
       return 'This field is required.';
     }
     
@@ -100,46 +103,10 @@ export default function JoinForm() {
       setFieldErrors({});
       setError('');
       
-      const message = `New Creator Application!
-      
-      --- Application Details ---
-      Name: ${formData.fullName}
-      Channel: ${formData.channelName}
-      Link: ${formData.youtubeLink}
-      Subscribers: ${formData.subscribers}
-      Email: ${formData.email}
-      Country: ${formData.country}`;
-      
-      const whatsappUrl = `https://wa.me/8801927694437?text=${encodeURIComponent(message)}`;
-      window.open(whatsappUrl, '_blank');
-
-      setSubmitted(true);
-      setFormData({ fullName: '', channelName: '', youtubeLink: '', subscribers: '', email: '', country: '' });
+      // Redirect to payment page with data
+      navigate('/payment', { state: { applicantData: formData } });
     }
   };
-
-  if (submitted) {
-    return (
-      <section id="join-form" className="py-20 px-6 max-w-2xl mx-auto text-center">
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="bg-white p-12 rounded-3xl shadow-xl border border-zinc-100"
-        >
-          <h2 className="text-3xl font-bold mb-4 text-emerald-600">Application Submitted!</h2>
-          <p className="text-zinc-600 mb-8">We have received your application. Our team will review it and get back to you soon.</p>
-          <a 
-            href="https://wa.me/8801927694437" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-block bg-green-500 text-white font-semibold px-8 py-4 rounded-2xl hover:bg-green-600 transition-all"
-          >
-            Chat on WhatsApp
-          </a>
-        </motion.div>
-      </section>
-    );
-  }
 
   const inputFields = [
     { type: 'text', placeholder: 'Full Name', key: 'fullName' },
@@ -147,7 +114,14 @@ export default function JoinForm() {
     { type: 'url', placeholder: 'YouTube Channel Link', key: 'youtubeLink' },
     { type: 'number', placeholder: 'Subscribers', key: 'subscribers' },
     { type: 'email', placeholder: 'Email', key: 'email' },
-    { type: 'select', placeholder: 'Select Country', key: 'country' },
+    { type: 'select', placeholder: 'Select Country', key: 'country', options: 'countries' },
+    { type: 'select', placeholder: 'Primary Content Niche', key: 'contentNiche', options: 'niches' },
+  ];
+
+  const niches = [
+    'Gaming', 'Beauty & Fashion', 'Tech & Gadgets', 'Education', 'Entertainment', 
+    'Lifestyle', 'Vlogging', 'Music', 'News & Politics', 'Comedy', 
+    'Food & Cooking', 'Travel', 'Health & Fitness', 'Business & Finance', 'Other'
   ];
 
   const countries = [
@@ -193,7 +167,7 @@ export default function JoinForm() {
         className="space-y-6" 
         onSubmit={handleSubmit}
       >
-        {inputFields.map((field, index) => (
+        {inputFields.map((field) => (
           <motion.div
             key={field.key}
             variants={itemVariants}
@@ -205,8 +179,8 @@ export default function JoinForm() {
                 className={`w-full p-4 border-2 rounded-2xl bg-white focus:border-purple-500 transition-colors ${fieldErrors[field.key] ? 'border-red-500' : 'border-zinc-200'}`}
               >
                 <option value="">{field.placeholder}</option>
-                {countries.map(country => (
-                  <option key={country} value={country}>{country}</option>
+                {(field.options === 'countries' ? countries : niches).map(option => (
+                  <option key={option} value={option}>{option}</option>
                 ))}
               </select>
             ) : (

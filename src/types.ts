@@ -5,4 +5,5 @@ export interface JoinFormData {
   subscribers: string;
   email: string;
   country: string;
+  contentNiche: string;
 }
