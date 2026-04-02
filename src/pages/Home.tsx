@@ -12,24 +12,25 @@ import RequirementsPricing from '../components/RequirementsPricing';
 import JoinForm from '../components/JoinForm';
 import FAQ from '../components/FAQ';
 import Trust from '../components/Trust';
+import ScrollReveal from '../components/ScrollReveal';
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <Partners />
-      <NetworkPartners />
-      <MissionVision />
-      <UniqueBenefits />
-      <Features />
-      <PlatformTools />
-      <CreatorTestimonials />
-      <Earnings />
-      <CopyrightProtection />
-      <RequirementsPricing />
-      <FAQ />
-      <JoinForm />
-      <Trust />
+      <ScrollReveal><Partners /></ScrollReveal>
+      <ScrollReveal><NetworkPartners /></ScrollReveal>
+      <ScrollReveal><MissionVision /></ScrollReveal>
+      <ScrollReveal><UniqueBenefits /></ScrollReveal>
+      <ScrollReveal><Features /></ScrollReveal>
+      <ScrollReveal><PlatformTools /></ScrollReveal>
+      <ScrollReveal><CreatorTestimonials /></ScrollReveal>
+      <ScrollReveal><Earnings /></ScrollReveal>
+      <ScrollReveal><CopyrightProtection /></ScrollReveal>
+      <ScrollReveal><RequirementsPricing /></ScrollReveal>
+      <ScrollReveal><FAQ /></ScrollReveal>
+      <ScrollReveal><JoinForm /></ScrollReveal>
+      <ScrollReveal><Trust /></ScrollReveal>
     </>
   );
 }

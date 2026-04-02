@@ -10,6 +10,21 @@ const features = [
   { icon: TrendingUp, title: 'YouTube Growth & SEO Guidance', desc: 'Get expert help to grow your channel faster.', color: 'from-purple-400 to-violet-500' },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
+};
+
 export default function Features() {
   return (
     <section className="py-20 px-6 bg-zinc-50">
@@ -17,19 +32,23 @@ export default function Features() {
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5 }}
           className="text-4xl font-bold text-center mb-16 tracking-tight"
         >
           Why Creators Choose OrbitX MCN
         </motion.h2>
-        <div className="grid md:grid-cols-3 gap-8">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid md:grid-cols-3 gap-8"
+        >
           {features.map((f, i) => (
             <motion.div 
               key={i} 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+              variants={itemVariants}
               whileHover={{ y: -10 }}
               className="bg-white p-8 rounded-3xl shadow-lg border border-zinc-100 hover:shadow-2xl transition-all"
             >
@@ -44,7 +63,7 @@ export default function Features() {
               <p className="text-zinc-600">{f.desc}</p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -33,6 +33,19 @@ const faqs = [
   }
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
+};
+
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -41,19 +54,23 @@ export default function FAQ() {
       <motion.h2 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5 }}
         className="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600"
       >
         Frequently Asked Questions
       </motion.h2>
-      <div className="space-y-4">
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+        className="space-y-4"
+      >
         {faqs.map((faq, index) => (
           <motion.div 
             key={index} 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
+            variants={itemVariants}
             className="border border-zinc-200 rounded-2xl overflow-hidden hover:border-purple-300 transition-colors"
           >
             <button
@@ -77,7 +94,7 @@ export default function FAQ() {
             </AnimatePresence>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }

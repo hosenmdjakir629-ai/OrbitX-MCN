@@ -61,7 +61,8 @@ export default function Earnings() {
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5 }}
         className="max-w-5xl mx-auto bg-gradient-to-r from-zinc-900 to-zinc-800 rounded-3xl p-12 text-white shadow-2xl border border-zinc-700"
       >
         <h2 className="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400">Creator Earnings Example</h2>
@@ -98,8 +99,8 @@ export default function Earnings() {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ delay: 0.2, duration: 0.5 }}
           className="h-80 bg-zinc-950/50 p-6 rounded-2xl border border-zinc-800"
         >
           <ResponsiveContainer width="100%" height="100%">

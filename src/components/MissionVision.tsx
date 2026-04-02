@@ -1,6 +1,19 @@
 import { motion } from 'motion/react';
 import { Target, Lightbulb, Award, ShieldCheck, TrendingUp } from 'lucide-react';
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
+};
+
 export default function MissionVision() {
   return (
     <section className="py-24 bg-zinc-950 text-white relative overflow-hidden">
@@ -15,7 +28,8 @@ export default function MissionVision() {
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
             className="text-3xl md:text-5xl font-bold mb-6"
           >
             Our Mission & Vision
@@ -23,8 +37,8 @@ export default function MissionVision() {
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ delay: 0.1, duration: 0.6 }}
             className="text-lg text-zinc-400 max-w-3xl mx-auto"
           >
             We are dedicated to elevating creators to new heights, providing the foundation and expertise needed to thrive in the competitive digital landscape.
@@ -36,7 +50,8 @@ export default function MissionVision() {
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
             className="bg-white/5 border border-white/10 p-10 rounded-3xl backdrop-blur-sm relative overflow-hidden group"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110" />
@@ -53,7 +68,8 @@ export default function MissionVision() {
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
             className="bg-white/5 border border-white/10 p-10 rounded-3xl backdrop-blur-sm relative overflow-hidden group"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110" />
@@ -72,7 +88,8 @@ export default function MissionVision() {
           <motion.h3 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
             className="text-2xl md:text-4xl font-bold mb-4"
           >
             Backed by Industry Experts
@@ -80,15 +97,21 @@ export default function MissionVision() {
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ delay: 0.1, duration: 0.6 }}
             className="text-zinc-400 max-w-2xl mx-auto"
           >
             Founded by a team of YouTube Certified professionals, veteran creators, and digital strategists. We bring decades of combined experience to your channel.
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid md:grid-cols-3 gap-6"
+        >
           {[
             {
               icon: <Award className="w-6 h-6 text-yellow-400" />,
@@ -108,10 +131,7 @@ export default function MissionVision() {
           ].map((item, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+              variants={itemVariants}
               className="bg-white/5 border border-white/10 p-8 rounded-2xl text-center hover:bg-white/10 transition-colors"
             >
               <div className="mx-auto w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
@@ -121,7 +141,7 @@ export default function MissionVision() {
               <p className="text-sm text-zinc-400 leading-relaxed">{item.desc}</p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

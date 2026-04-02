@@ -28,6 +28,19 @@ const policies = [
   }
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
 export default function CopyrightProtection() {
   return (
     <section className="py-20 px-6 bg-zinc-950 text-white border-t border-zinc-900">
@@ -36,7 +49,8 @@ export default function CopyrightProtection() {
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5 }}
             className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400"
           >
             Complete Copyright Protection
@@ -44,29 +58,32 @@ export default function CopyrightProtection() {
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ delay: 0.1, duration: 0.5 }}
             className="text-xl text-zinc-400 max-w-2xl mx-auto"
           >
             Your content is your most valuable asset. OrbitX MCN provides enterprise-grade protection to ensure nobody steals your hard work.
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid md:grid-cols-2 gap-8"
+        >
           {policies.map((policy, i) => (
             <motion.div 
               key={i} 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+              variants={itemVariants}
               className="bg-zinc-900 p-8 rounded-3xl border border-zinc-800 hover:border-zinc-700 transition-all flex flex-col sm:flex-row gap-6 items-start"
             >
               <motion.div
-                initial={{ scale: 0.5, opacity: 0 }}
-                whileInView={{ scale: [0.5, 1.2, 1], opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 + 0.2, ease: "easeOut" }}
+                variants={{
+                  hidden: { scale: 0.5, opacity: 0 },
+                  visible: { scale: [0.5, 1.2, 1], opacity: 1, transition: { duration: 0.6 } }
+                }}
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 className={`shrink-0 p-4 rounded-2xl bg-gradient-to-br ${policy.color} text-white shadow-lg`}
               >
@@ -78,7 +95,7 @@ export default function CopyrightProtection() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

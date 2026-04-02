@@ -31,6 +31,19 @@ const networkPartners = [
   }
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
+};
+
 export default function NetworkPartners() {
   return (
     <section className="py-12 bg-zinc-50 border-b border-zinc-100">
@@ -38,14 +51,17 @@ export default function NetworkPartners() {
         <p className="text-center text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-8">
           OrbitX MCN Network Partners
         </p>
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="flex flex-wrap justify-center items-center gap-8 md:gap-16"
+        >
           {networkPartners.map((partner, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              variants={itemVariants}
               className="flex justify-center"
             >
               <img
@@ -56,7 +72,7 @@ export default function NetworkPartners() {
               />
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

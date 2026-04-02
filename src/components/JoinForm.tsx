@@ -2,6 +2,19 @@ import { useState, FormEvent } from 'react';
 import { motion } from 'motion/react';
 import { JoinFormData } from '../types';
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
+};
+
 export default function JoinForm() {
   const [formData, setFormData] = useState<JoinFormData>({
     fullName: '',
@@ -165,20 +178,25 @@ export default function JoinForm() {
       <motion.h2 
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5 }}
         className="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600"
       >
         Creator Join Form
       </motion.h2>
       {error && <p className="text-red-500 text-center mb-6">{error}</p>}
-      <form className="space-y-6" onSubmit={handleSubmit}>
+      <motion.form 
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+        className="space-y-6" 
+        onSubmit={handleSubmit}
+      >
         {inputFields.map((field, index) => (
           <motion.div
             key={field.key}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            variants={itemVariants}
           >
             {field.type === 'select' ? (
               <select
@@ -205,17 +223,14 @@ export default function JoinForm() {
         ))}
         <motion.button
           type="submit"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: inputFields.length * 0.1 }}
+          variants={itemVariants}
           whileHover={{ scale: 1.02, boxShadow: "0 0 20px rgba(147, 51, 234, 0.3)" }}
           whileTap={{ scale: 0.98 }}
           className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold p-4 rounded-2xl transition-all"
         >
           🚀 Submit Application
         </motion.button>
-      </form>
+      </motion.form>
     </section>
   );
 }

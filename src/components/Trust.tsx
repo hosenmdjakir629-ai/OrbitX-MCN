@@ -18,7 +18,8 @@ function AnimatedCounter({ value, label, formatter, colorClass }: { value: numbe
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5 }}
       whileHover={{ y: -10 }}
       className={`bg-zinc-900 p-8 rounded-3xl border border-zinc-800 transition-colors hover:border-${colorClass.split('-')[1]}-500`}
     >
@@ -80,7 +81,8 @@ export default function Trust() {
       <motion.h2 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5 }}
         className="text-4xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400"
       >
         Trusted by Creators
@@ -107,7 +109,8 @@ export default function Trust() {
       <motion.h3 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5 }}
         className="text-3xl font-bold mb-12"
       >
         Creator Testimonials
@@ -120,7 +123,7 @@ export default function Trust() {
                 key={i} 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 whileHover={{ scale: 1.05 }}
                 className="flex-[0_0_100%] md:flex-[0_0_33.33%] bg-zinc-900 p-4 rounded-3xl border border-zinc-800 hover:border-white/20 transition-colors"

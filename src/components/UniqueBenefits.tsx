@@ -22,6 +22,19 @@ const benefits = [
   }
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
+};
+
 export default function UniqueBenefits() {
   return (
     <section className="py-24 bg-white relative overflow-hidden">
@@ -30,7 +43,8 @@ export default function UniqueBenefits() {
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
             className="text-3xl md:text-5xl font-bold mb-6 text-zinc-900"
           >
             Why Join OrbitX MCN?
@@ -38,22 +52,25 @@ export default function UniqueBenefits() {
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ delay: 0.1, duration: 0.6 }}
             className="text-lg text-zinc-600 max-w-2xl mx-auto"
           >
             We don't just manage channels; we build digital empires. Here is what sets us apart from the rest of the industry.
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid md:grid-cols-3 gap-8"
+        >
           {benefits.map((benefit, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.15 }}
+              variants={itemVariants}
               className="bg-zinc-50 border border-zinc-100 p-8 rounded-3xl hover:shadow-xl hover:shadow-purple-900/5 transition-all duration-300 group"
             >
               <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 ${benefit.color} transition-transform group-hover:scale-110 group-hover:rotate-3`}>
@@ -65,7 +82,7 @@ export default function UniqueBenefits() {
               </p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -60,6 +60,20 @@ const tools = [
   }
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  hover: { y: -5, scale: 1.02 }
+};
+
 export default function PlatformTools() {
   return (
     <section className="py-24 px-6 bg-zinc-50">
@@ -68,7 +82,8 @@ export default function PlatformTools() {
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5 }}
             className="text-4xl font-bold mb-4 tracking-tight text-zinc-900"
           >
             Platform Tools
@@ -76,34 +91,33 @@ export default function PlatformTools() {
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ delay: 0.1, duration: 0.5 }}
             className="text-xl text-zinc-600 max-w-2xl mx-auto"
           >
             Everything you need to manage, distribute, and monetize your content in one place.
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
           {tools.map((tool, i) => (
             <motion.div 
               key={i} 
-              initial="initial"
-              whileInView="animate"
+              variants={itemVariants}
               whileHover="hover"
-              viewport={{ once: true }}
-              variants={{
-                initial: { opacity: 0, y: 20 },
-                animate: { opacity: 1, y: 0, transition: { delay: i * 0.1 } },
-                hover: { y: -5, scale: 1.02 }
-              }}
               className="bg-white p-6 rounded-3xl shadow-sm border border-zinc-200 hover:shadow-xl transition-all relative overflow-hidden group"
             >
               <motion.div 
                 variants={{
-                  initial: { opacity: 0.1, scale: 1, rotate: 0 },
-                  animate: { opacity: 0.1, scale: 1, rotate: 0 },
-                  hover: { opacity: 0.2, scale: 1.2, rotate: -12, transition: { duration: 0.4, ease: "easeOut" } }
+                  hidden: { opacity: 0.1, scale: 1, rotate: 0 },
+                  visible: { opacity: 0.1, scale: 1, rotate: 0 },
+                  hover: { opacity: 0.2, scale: 1.2, rotate: -12, transition: { duration: 0.4 } }
                 }}
                 className="absolute top-0 right-0 p-4"
               >
@@ -114,8 +128,8 @@ export default function PlatformTools() {
                 <div className="flex items-center justify-between mb-6">
                   <motion.div 
                     variants={{
-                      initial: { scale: 1, rotate: 0 },
-                      animate: { scale: 1, rotate: 0 },
+                      hidden: { scale: 1, rotate: 0 },
+                      visible: { scale: 1, rotate: 0 },
                       hover: { 
                         scale: [1, 1.2, 1.1], 
                         rotate: [0, -10, 10, 0],
@@ -137,7 +151,7 @@ export default function PlatformTools() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

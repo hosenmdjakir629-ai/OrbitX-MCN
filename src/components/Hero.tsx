@@ -1,14 +1,24 @@
-import { motion } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight } from 'lucide-react';
+import { useRef } from 'react';
 
 export default function Hero() {
   const { t } = useTranslation();
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"]
+  });
+
+  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const opacityText = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const yText = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section className="bg-gradient-to-br from-indigo-950 via-purple-950 to-zinc-950 text-white py-20 px-6 relative overflow-hidden min-h-[90vh] flex flex-col justify-center">
+    <section ref={ref} className="bg-gradient-to-br from-indigo-950 via-purple-950 to-zinc-950 text-white py-20 px-6 relative overflow-hidden min-h-[90vh] flex flex-col justify-center">
       {/* Dynamic Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <motion.div style={{ y: yBg }} className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           animate={{
             x: [0, 100, -100, 0],
@@ -47,7 +57,7 @@ export default function Hero() {
           }}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] bg-pink-600/20 rounded-full blur-[150px]"
         />
-      </div>
+      </motion.div>
 
       <div className="absolute top-6 left-6 flex items-center gap-2 z-10">
         <a href="https://www.facebook.com/share/1Ao6JrsC9Z/" target="_blank" rel="noopener noreferrer">
@@ -60,7 +70,7 @@ export default function Hero() {
         </a>
         <span className="font-bold text-xl tracking-tighter">OrbitX MCN</span>
       </div>
-      <div className="max-w-5xl mx-auto text-center relative z-10">
+      <motion.div style={{ y: yText, opacity: opacityText }} className="max-w-5xl mx-auto text-center relative z-10">
         <motion.h1 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -115,7 +125,7 @@ export default function Hero() {
           {t('hero.joinButton')}
           <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
         </motion.a>
-      </div>
+      </motion.div>
     </section>
   );
 }
