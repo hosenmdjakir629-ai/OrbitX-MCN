@@ -17,6 +17,10 @@ const paymentPartners = [
     name: 'Binance',
     logo: 'https://download.logo.wine/logo/Binance/Binance-Logo.wine.png',
   },
+  {
+    name: 'PayPal',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/960px-PayPal.svg.png',
+  },
 ];
 
 export default function PaymentPartners() {
