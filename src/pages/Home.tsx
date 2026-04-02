@@ -1,5 +1,6 @@
 import Hero from '../components/Hero';
 import Partners from '../components/Partners';
+import PaymentPartners from '../components/PaymentPartners';
 import NetworkPartners from '../components/NetworkPartners';
 import MissionVision from '../components/MissionVision';
 import UniqueBenefits from '../components/UniqueBenefits';
@@ -19,6 +20,7 @@ export default function Home() {
     <>
       <Hero />
       <ScrollReveal><Partners /></ScrollReveal>
+      <ScrollReveal><PaymentPartners /></ScrollReveal>
       <ScrollReveal><NetworkPartners /></ScrollReveal>
       <ScrollReveal><MissionVision /></ScrollReveal>
       <ScrollReveal><UniqueBenefits /></ScrollReveal>
