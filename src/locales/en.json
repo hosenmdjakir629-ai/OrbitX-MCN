@@ -1,19 +1,38 @@
 {
   "completePayment": "Complete Your Payment",
-  "total": "Total: $100 (Join Fee)",
+  "totalAmount": "Total: {{amount}} (Join Fee)",
   "bkash": "bKash",
   "nagad": "Nagad",
   "rocket": "Rocket",
   "binance": "Binance (USDT BEP20)",
+  "card": "Card (Global)",
   "sendTo": "Send Money to this {{method}} number:",
   "sendToBinance": "Send Withdraw to this BINANCE Address:",
+  "payViaCard": "Pay via Card (Stripe Global)",
   "transactionId": "Transaction ID",
   "senderNumber": "Your Sender Number",
   "submit": "Submit Transaction Details",
   "paymentSubmitted": "Payment Submitted!",
+  "downloadReceipt": "Download Receipt (PDF)",
   "verificationMessage": "We have received your transaction details. Our team will verify it shortly and activate your account.",
   "chatWhatsApp": "Chat with us on WhatsApp",
   "payViaBkash": "Pay via bKash Link",
+  "support": {
+    "title": "Need Help? We're Here for You",
+    "subtitle": "Contact Us",
+    "whatsapp": {
+      "title": "WhatsApp Support",
+      "description": "Get instant support from our team on WhatsApp. We're available for quick queries and real-time assistance.",
+      "responseTime": "Response time: < 30 mins",
+      "button": "Chat on WhatsApp"
+    },
+    "email": {
+      "title": "Email Support",
+      "description": "For formal inquiries, partnership requests, or detailed technical support, feel free to reach out via email.",
+      "responseTime": "Response time: < 24 hours",
+      "button": "Send an Email"
+    }
+  },
   "hero": {
     "title": "Join OrbitX MCN & Grow Your YouTube Channel Faster",
     "subtitle": "Get brand deals, copyright protection, premium resources, and expert growth support.",

@@ -21,6 +21,10 @@ const paymentPartners = [
     name: 'PayPal',
     logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/960px-PayPal.svg.png',
   },
+  {
+    name: 'Card',
+    logo: 'https://www.nicepng.com/png/full/87-870350_credit-cards-all-credit-card-logos.png',
+  },
 ];
 
 export default function PaymentPartners() {

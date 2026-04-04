@@ -12,6 +12,7 @@ import CopyrightProtection from '../components/CopyrightProtection';
 import RequirementsPricing from '../components/RequirementsPricing';
 import JoinForm from '../components/JoinForm';
 import FAQ from '../components/FAQ';
+import Support from '../components/Support';
 import Trust from '../components/Trust';
 import ScrollReveal from '../components/ScrollReveal';
 
@@ -31,6 +32,7 @@ export default function Home() {
       <ScrollReveal><CopyrightProtection /></ScrollReveal>
       <ScrollReveal><RequirementsPricing /></ScrollReveal>
       <ScrollReveal><FAQ /></ScrollReveal>
+      <ScrollReveal><Support /></ScrollReveal>
       <ScrollReveal><JoinForm /></ScrollReveal>
       <ScrollReveal><Trust /></ScrollReveal>
     </>
