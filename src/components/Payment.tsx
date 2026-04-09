@@ -201,6 +201,7 @@ Amount: ${displayAmount} (Join Fee)`;
 --- Applicant Details ---
 Name: ${applicantData.fullName}
 Channel: ${applicantData.channelName}
+Channel URL: ${applicantData.youtubeLink}
 Niche: ${applicantData.contentNiche}
 Email: ${applicantData.email}
 Country: ${applicantData.country}`;

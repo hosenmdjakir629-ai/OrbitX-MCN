@@ -13,6 +13,10 @@ async function startServer() {
   app.use(express.json());
 
   // API routes FIRST
+  app.get("/api/health", (req, res) => {
+    res.json({ status: "ok" });
+  });
+
   app.post("/api/send-confirmation", async (req, res) => {
     const { email, name, method, transactionId, amount } = req.body;
 

@@ -80,7 +80,7 @@ export default function Support() {
             <div className="space-y-4 mb-8">
               <div className="flex items-center gap-3 text-zinc-500">
                 <Mail size={18} className="text-purple-500" />
-                <span className="font-medium">support@orbitxmcn.com</span>
+                <span className="font-medium">support.orbitxmcn.digital@gmail.com</span>
               </div>
               <div className="flex items-center gap-3 text-zinc-500">
                 <Clock size={18} className="text-purple-500" />
@@ -88,7 +88,7 @@ export default function Support() {
               </div>
             </div>
             <a 
-              href="mailto:support@orbitxmcn.com" 
+              href="mailto:support.orbitxmcn.digital@gmail.com" 
               className="inline-flex items-center justify-center w-full bg-purple-600 text-white font-bold py-4 rounded-2xl hover:bg-purple-700 transition-all gap-2"
             >
               <Mail size={20} />
