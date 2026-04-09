@@ -9,16 +9,19 @@
       // Fix for libraries trying to overwrite fetch in read-only environments (like AI Studio iframes)
       (function() {
         try {
-          var descriptor = Object.getOwnPropertyDescriptor(window, 'fetch');
-          if (descriptor && !descriptor.writable && !descriptor.set && descriptor.configurable) {
-            var originalFetch = window.fetch;
+          var target = window;
+          var desc = Object.getOwnPropertyDescriptor(target, 'fetch');
+          if (!desc) {
+            target = window.constructor.prototype;
+            desc = Object.getOwnPropertyDescriptor(target, 'fetch');
+          }
+          if (desc && desc.configurable) {
+            var _fetch = window.fetch;
             Object.defineProperty(window, 'fetch', {
+              get: function() { return _fetch; },
+              set: function(v) { _fetch = v; },
               configurable: true,
-              enumerable: true,
-              get: function() { return originalFetch; },
-              set: function() {
-                console.warn('A library tried to overwrite window.fetch. This was prevented to avoid a TypeError.');
-              }
+              enumerable: true
             });
           }
         } catch (e) {}
