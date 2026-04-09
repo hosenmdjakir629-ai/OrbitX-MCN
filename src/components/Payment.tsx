@@ -220,19 +220,19 @@ Country: ${applicantData.country}`;
       <motion.div 
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-white p-10 rounded-3xl shadow-xl border border-zinc-100 text-center max-w-lg mx-auto"
+        className="glass-colorful p-10 rounded-3xl shadow-xl border border-white/10 text-center max-w-lg mx-auto"
       >
-        <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
-          <CheckCircle2 className="w-10 h-10 text-emerald-600" />
+        <div className="w-20 h-20 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
+          <CheckCircle2 className="w-10 h-10 text-emerald-500" />
         </div>
-        <h2 className="text-2xl font-bold text-zinc-900 mb-4">{t('paymentSubmitted')}</h2>
-        <p className="text-zinc-600 mb-8 leading-relaxed">
+        <h2 className="text-2xl font-display font-bold text-white mb-4">{t('paymentSubmitted')}</h2>
+        <p className="text-zinc-300 mb-8 leading-relaxed">
           We have opened WhatsApp with your payment details. Please send the message to our support team to complete the verification.
         </p>
         <div className="flex flex-col gap-3">
           <button 
             onClick={generatePDF}
-            className="bg-zinc-900 text-white font-bold py-4 px-8 rounded-2xl hover:bg-zinc-800 transition-all flex items-center justify-center gap-2"
+            className="bg-gradient-to-r from-orbit-pink to-orbit-purple text-white font-bold py-4 px-8 rounded-2xl hover:opacity-90 transition-all flex items-center justify-center gap-2"
           >
             <Download size={20} />
             {t('downloadReceipt')}
@@ -241,7 +241,7 @@ Country: ${applicantData.country}`;
             href="https://wa.me/8801927694437" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="bg-green-500 text-white font-bold py-4 px-8 rounded-2xl hover:bg-green-600 transition-all flex items-center justify-center gap-2"
+            className="bg-emerald-500 text-white font-bold py-4 px-8 rounded-2xl hover:bg-emerald-600 transition-all flex items-center justify-center gap-2"
           >
             {t('chatWhatsApp')}
           </a>
@@ -252,7 +252,7 @@ Country: ${applicantData.country}`;
               setTransactionId('');
               setSenderNumber('');
             }}
-            className="text-zinc-400 hover:text-zinc-600 text-sm font-medium transition-colors"
+            className="text-zinc-500 hover:text-white text-sm font-medium transition-colors"
           >
             Submit another transaction
           </button>
@@ -266,23 +266,23 @@ Country: ${applicantData.country}`;
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-zinc-100"
+        className="glass-colorful p-8 md:p-10 rounded-3xl shadow-xl border border-white/10"
       >
-        <h2 className="text-3xl font-bold text-zinc-900 mb-2 text-center">{t('completePayment')}</h2>
+        <h2 className="text-3xl font-display font-bold text-white mb-2 text-center">{t('completePayment')}</h2>
         
         <div className="flex flex-col items-center mb-10">
-          <p className="text-zinc-500 font-medium mb-4">
+          <p className="text-zinc-400 font-medium mb-4">
             {t('totalAmount', { amount: displayAmount })}
           </p>
-          <div className="flex bg-zinc-100 p-1 rounded-xl">
+          <div className="flex bg-white/5 p-1 rounded-xl">
             {(['USD', 'EUR', 'GBP'] as Currency[]).map((cur) => (
               <button
                 key={cur}
                 onClick={() => setCurrency(cur)}
                 className={`px-4 py-1.5 rounded-lg text-sm font-bold transition-all ${
                   currency === cur 
-                    ? 'bg-white text-purple-600 shadow-sm' 
-                    : 'text-zinc-500 hover:text-zinc-700'
+                    ? 'bg-white text-orbit-pink shadow-sm' 
+                    : 'text-zinc-500 hover:text-zinc-300'
                 }`}
               >
                 {cur}
@@ -299,8 +299,8 @@ Country: ${applicantData.country}`;
               onClick={() => setSelectedMethod(method)}
               className={`p-4 rounded-2xl border-2 transition-all flex flex-col items-center gap-2 ${
                 selectedMethod === method 
-                  ? 'border-purple-600 bg-purple-50 text-purple-600' 
-                  : 'border-zinc-100 hover:border-zinc-200 text-zinc-500'
+                  ? 'border-orbit-pink bg-orbit-pink/10 text-orbit-pink' 
+                  : 'border-white/5 hover:border-white/10 text-zinc-500'
               }`}
             >
               {method === 'binance' ? (
@@ -309,7 +309,7 @@ Country: ${applicantData.country}`;
                 <img 
                   src="https://www.nicepng.com/png/full/87-870350_credit-cards-all-credit-card-logos.png" 
                   alt="Card" 
-                  className="h-6 w-auto object-contain"
+                  className="h-6 w-auto object-contain brightness-200"
                   referrerPolicy="no-referrer"
                 />
               ) : (
@@ -327,70 +327,70 @@ Country: ${applicantData.country}`;
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.3 }}
-            className="bg-zinc-50 p-6 rounded-2xl border border-zinc-100 mb-10"
+            className="bg-white/5 p-6 rounded-2xl border border-white/5 mb-10"
           >
             {selectedMethod === 'binance' ? (
               <div className="space-y-4">
-                <p className="text-sm font-medium text-zinc-600">{t('sendToBinance')}</p>
-                <div className="flex items-center gap-3 bg-white p-4 rounded-xl border border-zinc-200 group">
-                  <code className="text-xs font-mono text-zinc-800 break-all flex-1">
+                <p className="text-sm font-medium text-zinc-400">{t('sendToBinance')}</p>
+                <div className="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/10 group">
+                  <code className="text-xs font-mono text-zinc-200 break-all flex-1">
                     {paymentDetails.binance.address}
                   </code>
                   <button 
                     onClick={() => handleCopy(paymentDetails.binance.address)}
-                    className="p-2 hover:bg-zinc-100 rounded-lg transition-colors text-zinc-400 hover:text-purple-600"
+                    className="p-2 hover:bg-white/10 rounded-lg transition-colors text-zinc-500 hover:text-orbit-pink"
                     title="Copy Address"
                   >
                     {copied ? <CheckCircle2 size={18} className="text-emerald-500" /> : <Copy size={18} />}
                   </button>
                 </div>
-                <div className="flex justify-between items-center text-xs font-bold uppercase tracking-widest text-zinc-400">
+                <div className="flex justify-between items-center text-xs font-bold uppercase tracking-widest text-zinc-500">
                   <span>Network: {paymentDetails.binance.network}</span>
-                  <span className="text-purple-600">Manual Payment</span>
+                  <span className="text-orbit-pink">Manual Payment</span>
                 </div>
               </div>
             ) : selectedMethod === 'card' ? (
               <div className="space-y-4">
-                <p className="text-sm font-medium text-zinc-600">{t('payViaCard')}</p>
-                <div className="flex items-center gap-3 bg-white p-4 rounded-xl border border-zinc-200">
-                  <span className="text-sm font-bold text-zinc-900 flex-1 truncate">
+                <p className="text-sm font-medium text-zinc-400">{t('payViaCard')}</p>
+                <div className="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/10">
+                  <span className="text-sm font-bold text-white flex-1 truncate">
                     {paymentDetails.card.link}
                   </span>
                   <a 
                     href={paymentDetails.card.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 hover:bg-zinc-100 rounded-lg transition-colors text-zinc-400 hover:text-purple-600"
+                    className="p-2 hover:bg-white/10 rounded-lg transition-colors text-zinc-500 hover:text-orbit-pink"
                     title="Open Payment Link"
                   >
                     <ExternalLink size={18} />
                   </a>
                 </div>
-                <div className="flex justify-between items-center text-xs font-bold uppercase tracking-widest text-zinc-400">
+                <div className="flex justify-between items-center text-xs font-bold uppercase tracking-widest text-zinc-500">
                   <span>Type: {paymentDetails.card.type}</span>
-                  <span className="text-purple-600">Global Payment</span>
+                  <span className="text-orbit-pink">Global Payment</span>
                 </div>
               </div>
             ) : (
               <div className="space-y-4">
-                <p className="text-sm font-medium text-zinc-600">
+                <p className="text-sm font-medium text-zinc-400">
                   {t('sendTo', { method: t(selectedMethod) })}
                 </p>
-                <div className="flex items-center gap-3 bg-white p-4 rounded-xl border border-zinc-200">
-                  <span className="text-xl font-bold text-zinc-900 flex-1">
+                <div className="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/10">
+                  <span className="text-xl font-bold text-white flex-1">
                     {(paymentDetails[selectedMethod as keyof typeof paymentDetails] as { number: string }).number}
                   </span>
                   <button 
                     onClick={() => handleCopy((paymentDetails[selectedMethod as keyof typeof paymentDetails] as { number: string }).number)}
-                    className="p-2 hover:bg-zinc-100 rounded-lg transition-colors text-zinc-400 hover:text-purple-600"
+                    className="p-2 hover:bg-white/10 rounded-lg transition-colors text-zinc-500 hover:text-orbit-pink"
                     title="Copy Number"
                   >
                     {copied ? <CheckCircle2 size={18} className="text-emerald-500" /> : <Copy size={18} />}
                   </button>
                 </div>
-                <div className="flex justify-between items-center text-xs font-bold uppercase tracking-widest text-zinc-400">
+                <div className="flex justify-between items-center text-xs font-bold uppercase tracking-widest text-zinc-500">
                   <span>Type: {(paymentDetails[selectedMethod as keyof typeof paymentDetails] as { type: string }).type}</span>
-                  <span className="text-purple-600">Send Money</span>
+                  <span className="text-orbit-pink">Send Money</span>
                 </div>
               </div>
             )}
@@ -398,21 +398,21 @@ Country: ${applicantData.country}`;
         </AnimatePresence>
 
         {/* Submission Form */}
-        <div className="pt-6 border-t border-zinc-100">
+        <div className="pt-6 border-t border-white/5">
           <div className="flex items-center gap-2 mb-6">
-            <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
-              <CheckCircle2 className="w-5 h-5 text-purple-600" />
+            <div className="w-8 h-8 bg-orbit-pink/10 rounded-lg flex items-center justify-center">
+              <CheckCircle2 className="w-5 h-5 text-orbit-pink" />
             </div>
-            <h3 className="text-lg font-bold text-zinc-900">Verify Transaction</h3>
+            <h3 className="text-lg font-display font-bold text-white">Verify Transaction</h3>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="relative group">
-              <label className="block text-sm font-bold text-zinc-700 mb-2 ml-1">
+              <label className="block text-sm font-bold text-zinc-400 mb-2 ml-1">
                 {t('senderNumber')}
               </label>
               <div className="relative">
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-purple-600 transition-colors">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-orbit-pink transition-colors">
                   <Smartphone size={20} />
                 </div>
                 <input
@@ -421,17 +421,17 @@ Country: ${applicantData.country}`;
                   value={senderNumber}
                   onChange={(e) => setSenderNumber(e.target.value)}
                   placeholder="e.g. +88017XXXXXXXX"
-                  className="w-full pl-12 pr-4 py-4 bg-zinc-50 border-2 border-zinc-100 rounded-2xl focus:border-purple-600 focus:bg-white transition-all outline-none text-zinc-900 font-medium"
+                  className="w-full pl-12 pr-4 py-4 bg-white/5 border-2 border-white/5 rounded-2xl focus:border-orbit-pink focus:bg-white/10 transition-all outline-none text-white font-medium"
                 />
               </div>
             </div>
 
             <div className="relative group">
-              <label className="block text-sm font-bold text-zinc-700 mb-2 ml-1">
+              <label className="block text-sm font-bold text-zinc-400 mb-2 ml-1">
                 {t('transactionId')}
               </label>
               <div className="relative">
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-purple-600 transition-colors">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-orbit-pink transition-colors">
                   <Wallet size={20} />
                 </div>
                 <input
@@ -440,16 +440,16 @@ Country: ${applicantData.country}`;
                   value={transactionId}
                   onChange={(e) => setTransactionId(e.target.value)}
                   placeholder="Enter your Transaction ID"
-                  className="w-full pl-12 pr-4 py-4 bg-zinc-50 border-2 border-zinc-100 rounded-2xl focus:border-purple-600 focus:bg-white transition-all outline-none text-zinc-900 font-medium"
+                  className="w-full pl-12 pr-4 py-4 bg-white/5 border-2 border-white/5 rounded-2xl focus:border-orbit-pink focus:bg-white/10 transition-all outline-none text-white font-medium"
                 />
               </div>
             </div>
 
-            <div className="bg-emerald-50/50 p-4 rounded-2xl border border-emerald-100 flex items-start gap-3 mb-2">
+            <div className="bg-emerald-500/10 p-4 rounded-2xl border border-emerald-500/20 flex items-start gap-3 mb-2">
               <div className="mt-0.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                <CheckCircle2 className="w-4 h-4 text-emerald-500" />
               </div>
-              <p className="text-xs text-emerald-700 leading-relaxed font-medium">
+              <p className="text-xs text-emerald-500 leading-relaxed font-medium">
                 Your payment is secure. After submission, our team will verify the transaction and activate your account within 1-2 hours.
               </p>
             </div>
@@ -460,7 +460,7 @@ Country: ${applicantData.country}`;
               className={`w-full font-bold py-5 rounded-2xl transition-all mt-4 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${
                 showSuccess 
                   ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20' 
-                  : 'bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:shadow-xl hover:shadow-purple-500/20 active:scale-[0.98]'
+                  : 'bg-gradient-to-r from-orbit-pink via-orbit-purple to-orbit-blue text-white hover:shadow-xl hover:shadow-orbit-pink/20 active:scale-[0.98]'
               }`}
             >
               {isSendingEmail ? (
@@ -497,7 +497,7 @@ Country: ${applicantData.country}`;
               href="https://shop.bkash.com/orbitx-mcn/paymentlink/default-payment" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-pink-600 font-bold hover:underline"
+              className="inline-flex items-center gap-2 text-pink-500 font-bold hover:underline"
             >
               <ExternalLink size={18} />
               {t('payViaBkash')}

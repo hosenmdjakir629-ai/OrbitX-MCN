@@ -31,48 +31,37 @@ const partners = [
   }
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
-
 export default function Partners() {
   return (
-    <section className="py-12 bg-white border-b border-zinc-100">
-      <div className="max-w-6xl mx-auto px-6">
-        <p className="text-center text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-8">
+    <section className="py-12 bg-transparent border-y border-white/5 overflow-hidden">
+      <div className="container mx-auto px-6 mb-8">
+        <p className="text-center text-[10px] font-bold text-zinc-500 uppercase tracking-[0.3em]">
           Official Platform Partners & Certifications
         </p>
+      </div>
+      
+      <div className="relative flex overflow-x-hidden">
         <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="flex flex-wrap justify-center items-center gap-12 md:gap-24"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          className="flex whitespace-nowrap gap-16 md:gap-32 items-center py-4"
         >
-          {partners.map((partner, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="flex justify-center"
-            >
+          {[...partners, ...partners].map((partner, index) => (
+            <div key={index} className="flex-shrink-0 group relative">
+              <div className="absolute inset-0 bg-orbit-pink/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-full" />
               <img
                 src={partner.logo}
                 alt={`${partner.name} Logo`}
-                className="h-12 md:h-16 object-contain grayscale hover:grayscale-0 transition-all duration-300 mix-blend-multiply opacity-80 hover:opacity-100"
+                className="h-8 md:h-12 object-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500 brightness-200 relative z-10"
                 referrerPolicy="no-referrer"
               />
-            </motion.div>
+            </div>
           ))}
         </motion.div>
+        
+        {/* Gradient Overlays */}
+        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-orbit-black to-transparent z-10" />
+        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-orbit-black to-transparent z-10" />
       </div>
     </section>
   );

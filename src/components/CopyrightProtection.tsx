@@ -1,101 +1,95 @@
-import { ShieldAlert, Copyright, Scale, RefreshCcw } from 'lucide-react';
+import { ShieldAlert, Copyright, Scale, RefreshCcw, ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
-
-const policies = [
-  {
-    icon: Copyright,
-    title: 'YouTube Content ID',
-    desc: 'Automatic scanning and claiming of re-uploads across YouTube. We register your original content in the Content ID system to ensure you get credited.',
-    color: 'from-blue-500 to-cyan-500'
-  },
-  {
-    icon: ShieldAlert,
-    title: 'Cross-Platform Takedowns',
-    desc: 'Our legal team issues DMCA takedowns for piracy on other platforms like Facebook, TikTok, and Instagram to protect your brand.',
-    color: 'from-rose-500 to-pink-500'
-  },
-  {
-    icon: Scale,
-    title: 'Dispute Resolution',
-    desc: 'We handle false copyright strikes and claims against your channel. Our experts negotiate and resolve disputes so you can focus on creating.',
-    color: 'from-amber-500 to-orange-500'
-  },
-  {
-    icon: RefreshCcw,
-    title: 'Revenue Recovery',
-    desc: 'Instead of just taking down stolen videos, we can monetize them on your behalf and redirect the stolen revenue back into your pocket.',
-    color: 'from-emerald-500 to-teal-500'
-  }
-];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
 export default function CopyrightProtection() {
   return (
-    <section className="py-20 px-6 bg-zinc-950 text-white border-t border-zinc-900">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5 }}
-            className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400"
-          >
-            Complete Copyright Protection
-          </motion.h2>
+    <section id="copyright" className="py-24 px-6 bg-transparent relative overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:60px_60px]" />
+      
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
+          <div className="max-w-2xl">
+            <motion.p 
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-orbit-pink font-bold text-sm uppercase tracking-[0.2em] mb-4"
+            >
+              Legal & Protection
+            </motion.p>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-6xl font-display font-bold text-white leading-tight"
+            >
+              Your content, <span className="text-gradient-colorful italic font-serif">protected</span> everywhere.
+            </motion.h2>
+          </div>
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-            className="text-xl text-zinc-400 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-zinc-500 max-w-xs text-sm leading-relaxed"
           >
-            Your content is your most valuable asset. OrbitX MCN provides enterprise-grade protection to ensure nobody steals your hard work.
+            OrbitX MCN provides enterprise-grade protection to ensure nobody steals your hard work or revenue.
           </motion.p>
         </div>
 
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid md:grid-cols-2 gap-8"
-        >
-          {policies.map((policy, i) => (
+        <div className="grid md:grid-cols-2 border-l border-t border-white/5">
+          {[
+            {
+              icon: Copyright,
+              title: 'YouTube Content ID',
+              desc: 'Automatic scanning and claiming of re-uploads across YouTube. We register your original content in the Content ID system to ensure you get credited.',
+              color: 'text-orbit-cyan'
+            },
+            {
+              icon: ShieldAlert,
+              title: 'Cross-Platform Takedowns',
+              desc: 'Our legal team issues DMCA takedowns for piracy on other platforms like Facebook, TikTok, and Instagram to protect your brand.',
+              color: 'text-orbit-pink'
+            },
+            {
+              icon: Scale,
+              title: 'Dispute Resolution',
+              desc: 'We handle false copyright strikes and claims against your channel. Our experts negotiate and resolve disputes so you can focus on creating.',
+              color: 'text-orbit-orange'
+            },
+            {
+              icon: RefreshCcw,
+              title: 'Revenue Recovery',
+              desc: 'Instead of just taking down stolen videos, we can monetize them on your behalf and redirect the stolen revenue back into your pocket.',
+              color: 'text-emerald-400'
+            }
+          ].map((policy, i) => (
             <motion.div 
               key={i} 
-              variants={itemVariants}
-              className="bg-zinc-900 p-8 rounded-3xl border border-zinc-800 hover:border-zinc-700 transition-all flex flex-col sm:flex-row gap-6 items-start"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="group p-12 border-r border-b border-white/5 hover:bg-white/[0.05] transition-colors relative overflow-hidden glass-colorful"
             >
-              <motion.div
-                variants={{
-                  hidden: { scale: 0.5, opacity: 0 },
-                  visible: { scale: [0.5, 1.2, 1], opacity: 1, transition: { duration: 0.6 } }
-                }}
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                className={`shrink-0 p-4 rounded-2xl bg-gradient-to-br ${policy.color} text-white shadow-lg`}
-              >
-                <policy.icon size={32} />
-              </motion.div>
-              <div>
-                <h3 className="text-2xl font-semibold mb-3 text-zinc-100">{policy.title}</h3>
-                <p className="text-zinc-400 leading-relaxed">{policy.desc}</p>
+              <div className="flex items-start gap-8">
+                <div className={`p-4 rounded-2xl bg-white/5 ${policy.color} group-hover:scale-110 transition-transform duration-500`}>
+                  <policy.icon size={32} />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-display font-bold text-white mb-4 group-hover:text-orbit-pink transition-colors">
+                    {policy.title}
+                  </h3>
+                  <p className="text-zinc-300 text-sm leading-relaxed mb-8">
+                    {policy.desc}
+                  </p>
+                  <div className="flex items-center gap-2 text-[10px] font-bold text-orbit-pink uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                    Learn More <ArrowRight size={12} />
+                  </div>
+                </div>
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

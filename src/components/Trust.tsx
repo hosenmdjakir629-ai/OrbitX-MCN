@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { motion, animate, useMotionValue, useTransform } from 'motion/react';
 import useEmblaCarousel from 'embla-carousel-react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Star, CheckCircle2 } from 'lucide-react';
 
 function AnimatedCounter({ value, label, formatter, colorClass }: { value: number, label: string, formatter: (val: number) => string, colorClass: string }) {
   const count = useMotionValue(0);
@@ -9,7 +9,7 @@ function AnimatedCounter({ value, label, formatter, colorClass }: { value: numbe
 
   useEffect(() => {
     if (value > 0) {
-      const controls = animate(count, value, { duration: 2.5 });
+      const controls = animate(count, value, { duration: 2.5, ease: "easeOut" });
       return controls.stop;
     }
   }, [value, count]);
@@ -18,245 +18,169 @@ function AnimatedCounter({ value, label, formatter, colorClass }: { value: numbe
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5 }}
-      whileHover={{ y: -10 }}
-      className={`bg-zinc-900 p-8 rounded-3xl border border-zinc-800 transition-colors hover:border-${colorClass.split('-')[1]}-500`}
+      viewport={{ once: true }}
+      className="glass p-8 rounded-[32px] relative overflow-hidden group"
     >
-      <motion.p className={`text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${colorClass} mb-2`}>
+      <div className={`absolute inset-0 bg-gradient-to-br ${colorClass} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
+      <motion.p className={`text-6xl font-display font-bold text-white mb-2`}>
         {display}
       </motion.p>
-      <span className="text-zinc-400 text-lg font-medium">{label}</span>
+      <span className="text-zinc-500 text-sm font-bold uppercase tracking-widest">{label}</span>
     </motion.div>
   );
 }
 
 export default function Trust() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
   const [liveStats, setLiveStats] = useState({ activeChannels: 0, totalViews: 0 });
 
   useEffect(() => {
-    // Mock API call to fetch live stats
     const fetchStats = async () => {
-      // Simulate network delay
       await new Promise(resolve => setTimeout(resolve, 1200));
       setLiveStats({
         activeChannels: 138,
-        totalViews: 10000000 // 10 Million
+        totalViews: 10000000
       });
     };
     fetchStats();
   }, []);
 
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
-
-  const scrollTo = useCallback((index: number) => {
-    if (emblaApi) emblaApi.scrollTo(index);
-  }, [emblaApi]);
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
   }, [emblaApi]);
 
   useEffect(() => {
     if (!emblaApi) return;
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    onSelect();
-    setScrollSnaps(emblaApi.scrollSnapList());
     emblaApi.on('select', onSelect);
     emblaApi.on('reInit', onSelect);
   }, [emblaApi, onSelect]);
 
   return (
-    <section className="py-20 px-6 bg-zinc-950 text-white text-center">
-      <motion.h2 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.5 }}
-        className="text-4xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400"
-      >
-        Trusted by Creators
-      </motion.h2>
-      <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-20">
-        <AnimatedCounter 
-          value={liveStats.activeChannels} 
-          label="Active Channels" 
-          formatter={(val) => Math.round(val).toLocaleString() + '+'}
-          colorClass="from-purple-400 to-blue-400"
-        />
-        <AnimatedCounter 
-          value={liveStats.totalViews} 
-          label="Total Views Generated" 
-          formatter={(val) => {
-            if (val >= 1000000000) return (val / 1000000000).toFixed(1) + 'B+';
-            if (val >= 1000000) return (val / 1000000).toFixed(1) + 'M+';
-            return Math.round(val).toLocaleString() + '+';
-          }}
-          colorClass="from-emerald-400 to-cyan-400"
-        />
-      </div>
+    <section id="testimonials" className="py-24 px-6 bg-transparent relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(236,72,153,0.03)_0%,transparent_70%)]" />
+      
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="text-center mb-20">
+          <motion.p 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-orbit-pink font-bold text-sm uppercase tracking-[0.2em] mb-4"
+          >
+            Proven Results
+          </motion.p>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-display font-bold text-white mb-6"
+          >
+            Trusted by the world's <span className="text-gradient-colorful">top creators</span>.
+          </motion.h2>
+        </div>
 
-      <motion.h3 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.5 }}
-        className="text-3xl font-bold mb-12"
-      >
-        Creator Testimonials
-      </motion.h3>
-      <div className="relative max-w-6xl mx-auto px-12">
-        <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex gap-8">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <motion.div 
-                key={i} 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                className="flex-[0_0_100%] md:flex-[0_0_33.33%] bg-zinc-900 p-4 rounded-3xl border border-zinc-800 hover:border-white/20 transition-colors"
-              >
-                <div className="aspect-video bg-gradient-to-br from-zinc-800 to-zinc-700 rounded-2xl flex items-center justify-center mb-4 overflow-hidden">
-                  <img 
-                    src={`/testimonial-${i}.png`} 
-                    onError={(e) => {
-                      e.currentTarget.src = `https://picsum.photos/seed/creator${i}/400/225`;
-                    }}
-                    alt={`Creator ${i}`}
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
-                  />
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-24">
+          <AnimatedCounter 
+            value={liveStats.activeChannels} 
+            label="Active Channels" 
+            formatter={(val) => Math.round(val).toLocaleString() + '+'}
+            colorClass="from-orbit-pink to-orbit-purple"
+          />
+          <AnimatedCounter 
+            value={liveStats.totalViews} 
+            label="Total Views Generated" 
+            formatter={(val) => {
+              if (val >= 1000000000) return (val / 1000000000).toFixed(1) + 'B+';
+              if (val >= 1000000) return (val / 1000000).toFixed(1) + 'M+';
+              return Math.round(val).toLocaleString() + '+';
+            }}
+            colorClass="from-orbit-cyan to-orbit-blue"
+          />
+        </div>
+
+        <div className="relative mb-24">
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex gap-6">
+              {[
+                { name: 'NDTV', image: 'https://yt3.ggpht.com/ytc/AIdro_lcj8idHNsaTiTITY2vWQD6gaxZ6ITkpQPaLVskaDMyiml9=s48-c-k-c0x00ffffff-no-rj', quote: 'OrbitX MCN is an excellent platform for content creators looking to grow fast. Their support system, monetization guidance, and collaboration opportunities are truly impressive. Highly recommended for serious YouTubers!' },
+                { name: 'ISSEI / いっせい', image: 'https://yt3.ggpht.com/WQJfAcYaEL-sQ7LcF86SHG-T4u9zjiSScvdFxh73GCFJKleVcTakwZaqMhsGdZ64gfccQ2gn4Q=s176-c-k-c0x00ffffff-no-rj-mo', quote: 'The level of transparency and support we get from OrbitX is refreshing. They actually care about our long-term success.' },
+                { name: 'Gaming Central', image: 'https://picsum.photos/seed/gaming/100/100', quote: 'Joining OrbitX was the best decision for our channel. Their monetization tools have significantly boosted our revenue.' },
+                { name: 'Lifestyle Daily', image: 'https://picsum.photos/seed/life/100/100', quote: 'The community and networking opportunities at OrbitX are incredible. We\'ve collaborated with so many amazing creators.' },
+                { name: 'Global News', image: 'https://picsum.photos/seed/news/100/100', quote: 'Professional, reliable, and innovative. OrbitX MCN is the partner every serious creator needs.' }
+              ].map((testimonial, i) => (
+                <div key={i} className="flex-[0_0_100%] md:flex-[0_0_40%] lg:flex-[0_0_30%]">
+                  <motion.div 
+                    whileHover={{ y: -10 }}
+                    className="glass-colorful p-6 rounded-[32px] h-full flex flex-col"
+                  >
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-12 h-12 rounded-full overflow-hidden bg-zinc-800 ring-2 ring-orbit-pink/20">
+                        <img src={testimonial.image} alt={testimonial.name} referrerPolicy="no-referrer" className="w-full h-full object-cover" />
+                      </div>
+                      <div>
+                        <p className="font-bold text-white">{testimonial.name}</p>
+                        <div className="flex gap-1 text-orbit-pink">
+                          {[...Array(5)].map((_, j) => <Star key={j} size={12} fill="currentColor" />)}
+                        </div>
+                      </div>
+                    </div>
+                    <p className="text-zinc-300 text-sm leading-relaxed mb-6 italic">
+                      "{testimonial.quote}"
+                    </p>
+                    <div className="mt-auto pt-4 border-t border-white/5 flex items-center justify-between">
+                      <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Verified Creator</span>
+                      <CheckCircle2 size={16} className="text-orbit-cyan" />
+                    </div>
+                  </motion.div>
                 </div>
-                <p className="font-semibold">Creator Name {i}</p>
-              </motion.div>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex justify-center gap-4 mt-12">
+            <button onClick={scrollPrev} className="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors">
+              <ChevronLeft size={20} />
+            </button>
+            <button onClick={scrollNext} className="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors">
+              <ChevronRight size={20} />
+            </button>
+          </div>
+        </div>
+
+        {/* Trust Badges */}
+        <div className="pt-24 border-t border-white/5">
+          <p className="text-center text-[10px] font-bold text-zinc-500 uppercase tracking-[0.3em] mb-12">
+            Verified Security & Trust
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {[
+              { name: 'ScamAdviser', logo: 'https://www.scamadviser.com/images/static/logo/logo.svg', link: 'https://www.scamadviser.com/check-website/orbitxmcn.digital', score: '100% Trust Score' },
+              { name: 'Get Safe Online', logo: 'https://www.getsafeonline.org/wp-content/uploads/2021/05/gso.org_rgb_2.png', link: 'https://check.getsafeonline.org/check/www.orbitxmcn.digital', score: 'Verified Safe', dark: true },
+              { name: 'Trustpilot', logo: 'https://images.seeklogo.com/logo-png/47/1/trustpilot-stars-logo-png_seeklogo-477110.png', link: 'https://www.trustpilot.com/review/orbitxmcn.digital', score: '5-Star Rated' }
+            ].map((badge, i) => (
+              <motion.a 
+                key={i}
+                href={badge.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ y: -5 }}
+                className="glass-colorful p-6 rounded-2xl flex flex-col items-center gap-4 hover:border-orbit-pink/50 transition-all group"
+              >
+                <div className={`h-8 flex items-center justify-center ${badge.dark ? 'bg-white rounded px-2' : ''}`}>
+                  <img src={badge.logo} alt={badge.name} className="h-full object-contain" referrerPolicy="no-referrer" />
+                </div>
+                <div className="flex items-center gap-2 text-xs font-bold text-orbit-cyan">
+                  <span className="w-2 h-2 rounded-full bg-orbit-cyan animate-pulse" />
+                  {badge.score}
+                </div>
+              </motion.a>
             ))}
           </div>
         </div>
-
-        <button
-          onClick={scrollPrev}
-          className="absolute left-0 top-1/2 -translate-y-1/2 bg-zinc-800/80 hover:bg-zinc-700 p-3 rounded-full text-white transition-colors z-10"
-          aria-label="Previous testimonial"
-        >
-          <ChevronLeft size={24} />
-        </button>
-        <button
-          onClick={scrollNext}
-          className="absolute right-0 top-1/2 -translate-y-1/2 bg-zinc-800/80 hover:bg-zinc-700 p-3 rounded-full text-white transition-colors z-10"
-          aria-label="Next testimonial"
-        >
-          <ChevronRight size={24} />
-        </button>
-
-        <div className="flex justify-center gap-3 mt-8">
-          {scrollSnaps.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => scrollTo(index)}
-              className={`w-3 h-3 rounded-full transition-all ${
-                index === selectedIndex ? 'bg-emerald-500 w-6' : 'bg-zinc-700 hover:bg-zinc-500'
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
       </div>
-
-      {/* Trust Badges */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className="mt-24 max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6"
-      >
-        {/* ScamAdviser Badge */}
-        <a 
-          href="https://www.scamadviser.com/check-website/orbitxmcn.digital" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="block bg-zinc-900 p-6 rounded-3xl border border-zinc-800 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/10 transition-all group"
-        >
-          <div className="flex flex-col items-center gap-4">
-            <p className="text-zinc-400 text-sm font-medium tracking-widest uppercase">Verified Trust Score</p>
-            <img 
-              src="https://www.scamadviser.com/images/static/logo/logo.svg" 
-              alt="ScamAdviser Logo" 
-              className="h-10 object-contain group-hover:scale-105 transition-transform"
-              referrerPolicy="no-referrer"
-            />
-            <div className="flex items-center gap-2 text-emerald-400 font-bold mt-2">
-              <span className="flex h-3 w-3 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-              </span>
-              100% Safe & Verified
-            </div>
-          </div>
-        </a>
-
-        {/* Get Safe Online Badge */}
-        <a 
-          href="https://check.getsafeonline.org/check/www.orbitxmcn.digital" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="block bg-zinc-900 p-6 rounded-3xl border border-zinc-800 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/10 transition-all group"
-        >
-          <div className="flex flex-col items-center gap-4">
-            <p className="text-zinc-400 text-sm font-medium tracking-widest uppercase">Verified Safe</p>
-            <img 
-              src="https://www.getsafeonline.org/wp-content/uploads/2021/05/gso.org_rgb_2.png" 
-              alt="Get Safe Online Logo" 
-              className="h-10 object-contain group-hover:scale-105 transition-transform bg-white rounded-xl px-2 py-1"
-              referrerPolicy="no-referrer"
-            />
-            <div className="flex items-center gap-2 text-emerald-400 font-bold mt-2">
-              <span className="flex h-3 w-3 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-              </span>
-              100% Safe & Verified
-            </div>
-          </div>
-        </a>
-
-        {/* Trustpilot Badge */}
-        <a 
-          href="https://www.trustpilot.com/review/orbitxmcn.digital" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="block bg-zinc-900 p-6 rounded-3xl border border-zinc-800 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/10 transition-all group"
-        >
-          <div className="flex flex-col items-center gap-4">
-            <p className="text-zinc-400 text-sm font-medium tracking-widest uppercase">Verified Reviews</p>
-            <img 
-              src="https://images.seeklogo.com/logo-png/47/1/trustpilot-stars-logo-png_seeklogo-477110.png" 
-              alt="Trustpilot Logo" 
-              className="h-10 object-contain group-hover:scale-105 transition-transform"
-              referrerPolicy="no-referrer"
-            />
-            <div className="flex items-center gap-2 text-emerald-400 font-bold mt-2">
-              <span className="flex h-3 w-3 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-              </span>
-              5-Star Rated
-            </div>
-          </div>
-        </a>
-      </motion.div>
     </section>
   );
 }

@@ -1,122 +1,118 @@
-import { Facebook, Instagram, Twitter, Youtube, Mail, MessageCircle } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Youtube, Mail, MessageCircle, ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
-    <footer className="bg-zinc-950 text-white py-16 px-6 border-t border-zinc-800 overflow-hidden">
+    <footer className="bg-transparent text-white py-24 px-6 border-t border-white/5 relative overflow-hidden">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-orbit-pink to-transparent opacity-50" />
+      
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="max-w-6xl mx-auto"
+        className="max-w-7xl mx-auto"
       >
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
           {/* Brand */}
-          <div className="text-center md:text-left">
-            <p className="font-bold text-2xl tracking-tighter mb-4 bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400">OrbitX MCN</p>
-            <p className="text-zinc-500 text-sm leading-relaxed max-w-xs mx-auto md:mx-0">
-              Empowering creators to reach their full potential on YouTube with premium resources and growth support.
+          <div className="space-y-8">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orbit-pink via-orbit-purple to-orbit-blue p-[1px]">
+                <div className="w-full h-full bg-orbit-black rounded-[7px] flex items-center justify-center overflow-hidden">
+                  <img 
+                    src="https://lh3.googleusercontent.com/a-/ALV-UjWufNRZwo6-tyucp2_FHTKH_l4ALZbK_MxsZQo0FyUn5wVw6gI=s360-w360-h360" 
+                    alt="OrbitX Logo" 
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+              </div>
+              <span className="font-display font-bold text-xl tracking-tighter">OrbitX MCN</span>
+            </div>
+            <p className="text-zinc-500 text-sm leading-relaxed max-w-xs">
+              The premier YouTube Multi-Channel Network for creators who demand more. Growth, protection, and premium resources.
             </p>
-          </div>
-
-          {/* Trust Badges */}
-          <div className="text-center md:text-left">
-            <h4 className="font-bold text-zinc-200 mb-6 uppercase tracking-widest text-xs">Verified By</h4>
-            <div className="flex flex-wrap justify-center md:justify-start gap-4">
-              <a 
-                href="https://www.scamadviser.com/check-website/orbitxmcn.digital" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-zinc-900 p-3 rounded-xl border border-zinc-800 hover:border-emerald-500/50 transition-colors group"
-              >
-                <img 
-                  src="https://www.scamadviser.com/images/static/logo/logo.svg" 
-                  alt="ScamAdviser Logo" 
-                  className="h-6 object-contain group-hover:scale-105 transition-transform"
-                  referrerPolicy="no-referrer"
-                />
-              </a>
-              <a 
-                href="https://check.getsafeonline.org/check/www.orbitxmcn.digital" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-zinc-900 p-3 rounded-xl border border-zinc-800 hover:border-emerald-500/50 transition-colors group"
-              >
-                <img 
-                  src="https://www.getsafeonline.org/wp-content/uploads/2021/05/gso.org_rgb_2.png" 
-                  alt="Get Safe Online Logo" 
-                  className="h-6 object-contain group-hover:scale-105 transition-transform bg-white rounded px-1"
-                  referrerPolicy="no-referrer"
-                />
-              </a>
-              <a 
-                href="https://www.trustpilot.com/review/orbitxmcn.digital" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-zinc-900 p-3 rounded-xl border border-zinc-800 hover:border-emerald-500/50 transition-colors group"
-              >
-                <img 
-                  src="https://images.seeklogo.com/logo-png/47/1/trustpilot-stars-logo-png_seeklogo-477110.png" 
-                  alt="Trustpilot Logo" 
-                  className="h-6 object-contain group-hover:scale-105 transition-transform"
-                  referrerPolicy="no-referrer"
-                />
-              </a>
+            <div className="flex gap-4">
+              {[
+                { icon: Facebook, href: 'https://www.facebook.com/share/1Darg8BtFF/', color: 'hover:text-blue-500' },
+                { icon: Twitter, href: '#', color: 'hover:text-sky-400' },
+                { icon: Instagram, href: '#', color: 'hover:text-pink-500' },
+                { icon: Youtube, href: 'https://youtube.com/@orbitxmcn?si=rnWZIkYFchCx9HfE', color: 'hover:text-red-500' }
+              ].map((social, i) => (
+                <a key={i} href={social.href} className={`w-10 h-10 rounded-full glass-colorful flex items-center justify-center text-zinc-400 ${social.color} hover:border-white/20 transition-all`}>
+                  <social.icon size={18} />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Support */}
-          <div className="text-center md:text-left">
-            <h4 className="font-bold text-zinc-200 mb-6 uppercase tracking-widest text-xs">Support</h4>
+          {/* Quick Links */}
+          <div>
+            <h4 className="font-display font-bold text-white mb-8 uppercase tracking-widest text-xs">Platform</h4>
             <ul className="space-y-4">
+              {['Features', 'Creators', 'Pricing', 'FAQ'].map((link) => (
+                <li key={link}>
+                  <a href={`#${link.toLowerCase()}`} className="text-zinc-500 hover:text-orbit-pink text-sm transition-colors flex items-center gap-2 group">
+                    {link}
+                    <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Support */}
+          <div>
+            <h4 className="font-display font-bold text-white mb-8 uppercase tracking-widest text-xs">Support</h4>
+            <ul className="space-y-6">
               <li>
-                <a href="mailto:support.orbitxmcn.digital@gmail.com" className="flex items-center justify-center md:justify-start gap-3 text-zinc-400 hover:text-purple-400 transition-colors group">
-                  <Mail size={18} className="group-hover:scale-110 transition-transform" />
-                  <span className="text-sm">support.orbitxmcn.digital@gmail.com</span>
+                <a href="mailto:support.orbitxmcn.digital@gmail.com" className="group block">
+                  <p className="text-[10px] font-bold text-zinc-600 uppercase tracking-widest mb-1">Email Us</p>
+                  <div className="flex items-center gap-2 text-zinc-400 group-hover:text-orbit-pink transition-colors">
+                    <Mail size={16} />
+                    <span className="text-sm">support.orbitxmcn.digital@gmail.com</span>
+                  </div>
                 </a>
               </li>
               <li>
-                <a href="https://wa.me/8801927694437" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center md:justify-start gap-3 text-zinc-400 hover:text-emerald-400 transition-colors group">
-                  <MessageCircle size={18} className="group-hover:scale-110 transition-transform" />
-                  <span className="text-sm">+8801927694437</span>
+                <a href="https://wa.me/8801927694437" target="_blank" rel="noopener noreferrer" className="group block">
+                  <p className="text-[10px] font-bold text-zinc-600 uppercase tracking-widest mb-1">WhatsApp</p>
+                  <div className="flex items-center gap-2 text-zinc-400 group-hover:text-emerald-400 transition-colors">
+                    <MessageCircle size={16} />
+                    <span className="text-sm">+8801927694437</span>
+                  </div>
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Socials */}
-          <div className="text-center md:text-left">
-            <h4 className="font-bold text-zinc-200 mb-6 uppercase tracking-widest text-xs">Follow Us</h4>
-            <div className="flex justify-center md:justify-start gap-6">
-              <a href="https://www.facebook.com/share/1Darg8BtFF/" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-blue-500 transition-colors" aria-label="Facebook">
-                <Facebook size={20} />
-              </a>
-              <a href="#" className="text-zinc-400 hover:text-purple-400 transition-colors" aria-label="Twitter">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="text-zinc-400 hover:text-pink-400 transition-colors" aria-label="Instagram">
-                <Instagram size={20} />
-              </a>
-              <a href="https://youtube.com/@orbitxmcn?si=rnWZIkYFchCx9HfE" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-red-400 transition-colors" aria-label="YouTube">
-                <Youtube size={20} />
-              </a>
-            </div>
+          {/* Newsletter / CTA */}
+          <div>
+            <h4 className="font-display font-bold text-white mb-8 uppercase tracking-widest text-xs">Join the Network</h4>
+            <p className="text-zinc-500 text-sm mb-6">Ready to take your channel to the next level?</p>
+            <Link to="/payment" className="inline-flex items-center gap-2 bg-gradient-to-r from-orbit-pink to-orbit-purple text-white font-bold px-6 py-3 rounded-xl hover:opacity-90 transition-all text-sm">
+              Get Started <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-zinc-600 text-xs">© 2026 OrbitX MCN. All rights reserved.</p>
-          <div className="flex gap-6 items-center">
-            <Link to="/terms" className="text-zinc-500 hover:text-white text-xs transition-colors">
-              Terms & Conditions
-            </Link>
-            <a href="#" className="text-zinc-500 hover:text-white text-xs transition-colors">
-              Privacy Policy
-            </a>
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="flex items-center gap-8">
+            <p className="text-zinc-600 text-xs">© 2026 OrbitX MCN. All rights reserved.</p>
+            <div className="flex gap-6">
+              <Link to="/terms" className="text-zinc-600 hover:text-white text-xs transition-colors">Terms</Link>
+              <a href="#" className="text-zinc-600 hover:text-white text-xs transition-colors">Privacy</a>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-4">
+            <p className="text-[10px] font-bold text-zinc-600 uppercase tracking-widest">Powered by</p>
+            <span className="text-orbit-pink font-display font-bold tracking-tighter">YouTube Certified</span>
           </div>
         </div>
       </motion.div>
     </footer>
   );
 }
+
+import { ArrowRight } from 'lucide-react';

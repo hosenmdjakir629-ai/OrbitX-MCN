@@ -10,7 +10,7 @@ import LanguageSwitcher from './components/LanguageSwitcher';
 export default function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-white flex flex-col">
+      <div className="min-h-screen bg-colorful-mesh flex flex-col selection:bg-orbit-purple selection:text-white">
         <LanguageSwitcher />
         <div className="flex-grow">
           <Routes>

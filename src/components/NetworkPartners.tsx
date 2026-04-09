@@ -31,48 +31,38 @@ const networkPartners = [
   }
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
-
 export default function NetworkPartners() {
   return (
-    <section className="py-12 bg-zinc-50 border-b border-zinc-100">
-      <div className="max-w-6xl mx-auto px-6">
-        <p className="text-center text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-8">
-          OrbitX MCN Network Partners
-        </p>
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="flex flex-wrap justify-center items-center gap-8 md:gap-16"
+    <section className="py-16 bg-transparent border-b border-white/5">
+      <div className="max-w-7xl mx-auto px-6">
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center text-[10px] font-bold text-zinc-500 uppercase tracking-[0.3em] mb-12"
         >
+          OrbitX MCN Network Partners
+        </motion.p>
+        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20">
           {networkPartners.map((partner, index) => (
             <motion.div
               key={index}
-              variants={itemVariants}
-              className="flex justify-center"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.1, y: -5 }}
+              className="group relative"
             >
+              <div className="absolute inset-0 bg-orbit-cyan/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-full" />
               <img
                 src={partner.logo}
                 alt={`${partner.name} Logo`}
-                className="h-10 md:h-14 object-contain grayscale hover:grayscale-0 transition-all duration-300 mix-blend-multiply opacity-70 hover:opacity-100 rounded-lg"
+                className="h-10 md:h-12 object-contain grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 rounded-lg relative z-10"
                 referrerPolicy="no-referrer"
               />
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

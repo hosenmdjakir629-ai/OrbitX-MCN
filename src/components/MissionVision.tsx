@@ -1,147 +1,118 @@
 import { motion } from 'motion/react';
 import { Target, Lightbulb, Award, ShieldCheck, TrendingUp } from 'lucide-react';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
-
 export default function MissionVision() {
   return (
-    <section className="py-24 bg-zinc-950 text-white relative overflow-hidden">
-      {/* Background accents */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-1/2 -right-1/4 w-[1000px] h-[1000px] rounded-full bg-purple-900/20 blur-[120px]" />
-        <div className="absolute -bottom-1/2 -left-1/4 w-[800px] h-[800px] rounded-full bg-indigo-900/20 blur-[100px]" />
-      </div>
+    <section className="py-32 bg-transparent text-white relative overflow-hidden">
+      {/* Background Atmosphere */}
+      <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-orbit-pink/5 rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 left-0 w-[40%] h-[40%] bg-orbit-cyan/5 rounded-full blur-[100px]" />
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl md:text-5xl font-bold mb-6"
-          >
-            Our Mission & Vision
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ delay: 0.1, duration: 0.6 }}
-            className="text-lg text-zinc-400 max-w-3xl mx-auto"
-          >
-            We are dedicated to elevating creators to new heights, providing the foundation and expertise needed to thrive in the competitive digital landscape.
-          </motion.p>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8 mb-24">
-          {/* Mission Card */}
-          <motion.div 
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-24 items-center mb-32">
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
-            className="bg-white/5 border border-white/10 p-10 rounded-3xl backdrop-blur-sm relative overflow-hidden group"
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
           >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110" />
-            <div className="bg-purple-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 relative z-10">
-              <Target className="w-8 h-8 text-purple-400" />
-            </div>
-            <h3 className="text-2xl font-bold mb-4 relative z-10">Our Mission</h3>
-            <p className="text-zinc-300 leading-relaxed relative z-10">
-              To empower YouTube creators by providing strategic guidance, premium tools, and industry connections. We turn your passion into a thriving, sustainable business by handling the complexities of channel management so you can focus on what you do best: creating amazing content.
+            <p className="text-orbit-pink font-bold text-sm uppercase tracking-[0.2em] mb-6">Our Purpose</p>
+            <h2 className="text-5xl md:text-7xl font-display font-bold leading-tight mb-8">
+              Redefining the <span className="text-gradient-colorful italic font-serif">Creator</span> Economy.
+            </h2>
+            <p className="text-xl text-zinc-400 leading-relaxed max-w-xl">
+              OrbitX MCN isn't just a network; it's a launchpad for the next generation of digital icons. We combine data-driven strategy with human-centric support.
             </p>
           </motion.div>
 
-          {/* Vision Card */}
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
-            className="bg-white/5 border border-white/10 p-10 rounded-3xl backdrop-blur-sm relative overflow-hidden group"
-          >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110" />
-            <div className="bg-indigo-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 relative z-10">
-              <Lightbulb className="w-8 h-8 text-indigo-400" />
-            </div>
-            <h3 className="text-2xl font-bold mb-4 relative z-10">Our Vision</h3>
-            <p className="text-zinc-300 leading-relaxed relative z-10">
-              We envision a creator economy where talent is universally recognized and rewarded. OrbitX aims to stand as the premier global launchpad for the world's most influential digital voices, redefining creator success through innovation and transparent partnerships.
-            </p>
-          </motion.div>
+          <div className="grid gap-8">
+            {[
+              {
+                icon: Target,
+                title: "Our Mission",
+                desc: "To empower YouTube creators by providing strategic guidance, premium tools, and industry connections. We turn passion into sustainable business.",
+                color: "text-orbit-pink"
+              },
+              {
+                icon: Lightbulb,
+                title: "Our Vision",
+                desc: "A creator economy where talent is universally recognized and rewarded. We aim to be the premier global launchpad for influential voices.",
+                color: "text-orbit-cyan"
+              }
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.2 }}
+                className="glass-colorful p-10 rounded-[40px] relative overflow-hidden group"
+              >
+                <div className="flex items-start gap-8">
+                  <div className={`w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center ${item.color} group-hover:scale-110 transition-transform duration-500`}>
+                    <item.icon size={32} />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-display font-bold mb-4">{item.title}</h3>
+                    <p className="text-zinc-300 leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
-        {/* Team Expertise Section */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-20">
           <motion.h3 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
-            className="text-2xl md:text-4xl font-bold mb-4"
+            viewport={{ once: true }}
+            className="text-3xl md:text-5xl font-display font-bold mb-6"
           >
-            Backed by Industry Experts
+            Backed by <span className="text-gradient-colorful italic font-serif">Industry Experts</span>
           </motion.h3>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ delay: 0.1, duration: 0.6 }}
-            className="text-zinc-400 max-w-2xl mx-auto"
-          >
-            Founded by a team of YouTube Certified professionals, veteran creators, and digital strategists. We bring decades of combined experience to your channel.
-          </motion.p>
+          <p className="text-zinc-500 max-w-2xl mx-auto">
+            Our leadership team consists of YouTube Certified professionals and veteran creators with a proven track record of success.
+          </p>
         </div>
 
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid md:grid-cols-3 gap-6"
-        >
+        <div className="grid md:grid-cols-3 gap-8">
           {[
             {
-              icon: <Award className="w-6 h-6 text-yellow-400" />,
+              icon: Award,
               title: "YouTube Certified",
-              desc: "Our team holds official YouTube certifications in Audience Growth and Digital Rights Management."
+              desc: "Official certifications in Audience Growth and Digital Rights Management.",
+              color: "text-orbit-orange"
             },
             {
-              icon: <TrendingUp className="w-6 h-6 text-emerald-400" />,
+              icon: TrendingUp,
               title: "Algorithm Masters",
-              desc: "We analyze billions of data points to understand exactly what the YouTube algorithm favors today."
+              desc: "Deep data analysis to understand exactly what the algorithm favors today.",
+              color: "text-orbit-pink"
             },
             {
-              icon: <ShieldCheck className="w-6 h-6 text-blue-400" />,
+              icon: ShieldCheck,
               title: "IP Protection",
-              desc: "Fiercely dedicated to protecting your intellectual property from unauthorized re-uploads and piracy."
+              desc: "Fierce dedication to protecting your intellectual property from piracy.",
+              color: "text-orbit-cyan"
             }
           ].map((item, i) => (
             <motion.div
               key={i}
-              variants={itemVariants}
-              className="bg-white/5 border border-white/10 p-8 rounded-2xl text-center hover:bg-white/10 transition-colors"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="p-8 rounded-3xl border border-white/5 hover:bg-white/[0.05] transition-colors text-center glass-colorful"
             >
-              <div className="mx-auto w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
-                {item.icon}
+              <div className={`mx-auto w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-6 ${item.color}`}>
+                <item.icon size={28} />
               </div>
-              <h4 className="text-xl font-bold mb-3">{item.title}</h4>
+              <h4 className="text-xl font-display font-bold mb-3">{item.title}</h4>
               <p className="text-sm text-zinc-400 leading-relaxed">{item.desc}</p>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

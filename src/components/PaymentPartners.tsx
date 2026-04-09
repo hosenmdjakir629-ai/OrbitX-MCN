@@ -29,30 +29,31 @@ const paymentPartners = [
 
 export default function PaymentPartners() {
   return (
-    <section className="py-12 bg-zinc-50/50">
+    <section className="py-16 bg-transparent border-b border-white/5">
       <div className="max-w-7xl mx-auto px-6">
         <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-center text-zinc-400 text-sm font-bold uppercase tracking-widest mb-8"
+          className="text-center text-[10px] font-bold text-zinc-500 uppercase tracking-[0.3em] mb-12"
         >
           Supported Payment Partners
         </motion.p>
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 hover:opacity-100 transition-opacity duration-500">
+        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20">
           {paymentPartners.map((partner) => (
             <motion.div
               key={partner.name}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.1 }}
-              className="flex items-center justify-center"
+              whileHover={{ scale: 1.1, y: -5 }}
+              className="group relative"
             >
+              <div className="absolute inset-0 bg-orbit-pink/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-full" />
               <img
                 src={partner.logo}
                 alt={partner.name}
-                className="h-8 md:h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300 object-contain"
+                className="h-8 md:h-10 w-auto grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 object-contain relative z-10"
                 referrerPolicy="no-referrer"
               />
             </motion.div>
