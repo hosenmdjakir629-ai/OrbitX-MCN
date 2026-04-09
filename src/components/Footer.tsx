@@ -20,22 +20,50 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Trust Badge */}
+          {/* Trust Badges */}
           <div className="text-center md:text-left">
             <h4 className="font-bold text-zinc-200 mb-6 uppercase tracking-widest text-xs">Verified By</h4>
-            <a 
-              href="https://www.scamadviser.com/check-website/orbitxmcn.digital" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-block bg-zinc-900 p-3 rounded-xl border border-zinc-800 hover:border-emerald-500/50 transition-colors group"
-            >
-              <img 
-                src="https://www.scamadviser.com/images/static/logo/logo.svg" 
-                alt="ScamAdviser Logo" 
-                className="h-6 object-contain group-hover:scale-105 transition-transform"
-                referrerPolicy="no-referrer"
-              />
-            </a>
+            <div className="flex flex-wrap justify-center md:justify-start gap-4">
+              <a 
+                href="https://www.scamadviser.com/check-website/orbitxmcn.digital" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block bg-zinc-900 p-3 rounded-xl border border-zinc-800 hover:border-emerald-500/50 transition-colors group"
+              >
+                <img 
+                  src="https://www.scamadviser.com/images/static/logo/logo.svg" 
+                  alt="ScamAdviser Logo" 
+                  className="h-6 object-contain group-hover:scale-105 transition-transform"
+                  referrerPolicy="no-referrer"
+                />
+              </a>
+              <a 
+                href="https://check.getsafeonline.org/check/www.orbitxmcn.digital" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block bg-zinc-900 p-3 rounded-xl border border-zinc-800 hover:border-emerald-500/50 transition-colors group"
+              >
+                <img 
+                  src="https://www.getsafeonline.org/wp-content/uploads/2021/05/gso.org_rgb_2.png" 
+                  alt="Get Safe Online Logo" 
+                  className="h-6 object-contain group-hover:scale-105 transition-transform bg-white rounded px-1"
+                  referrerPolicy="no-referrer"
+                />
+              </a>
+              <a 
+                href="https://www.trustpilot.com/review/orbitxmcn.digital" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block bg-zinc-900 p-3 rounded-xl border border-zinc-800 hover:border-emerald-500/50 transition-colors group"
+              >
+                <img 
+                  src="https://images.seeklogo.com/logo-png/47/1/trustpilot-stars-logo-png_seeklogo-477110.png" 
+                  alt="Trustpilot Logo" 
+                  className="h-6 object-contain group-hover:scale-105 transition-transform"
+                  referrerPolicy="no-referrer"
+                />
+              </a>
+            </div>
           </div>
 
           {/* Support */}

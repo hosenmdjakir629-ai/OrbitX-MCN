@@ -174,14 +174,15 @@ export default function Trust() {
         </div>
       </div>
 
-      {/* ScamAdviser Badge */}
+      {/* Trust Badges */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="mt-24 max-w-md mx-auto"
+        className="mt-24 max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6"
       >
+        {/* ScamAdviser Badge */}
         <a 
           href="https://www.scamadviser.com/check-website/orbitxmcn.digital" 
           target="_blank" 
@@ -202,6 +203,56 @@ export default function Trust() {
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
               </span>
               100% Safe & Verified
+            </div>
+          </div>
+        </a>
+
+        {/* Get Safe Online Badge */}
+        <a 
+          href="https://check.getsafeonline.org/check/www.orbitxmcn.digital" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="block bg-zinc-900 p-6 rounded-3xl border border-zinc-800 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/10 transition-all group"
+        >
+          <div className="flex flex-col items-center gap-4">
+            <p className="text-zinc-400 text-sm font-medium tracking-widest uppercase">Verified Safe</p>
+            <img 
+              src="https://www.getsafeonline.org/wp-content/uploads/2021/05/gso.org_rgb_2.png" 
+              alt="Get Safe Online Logo" 
+              className="h-10 object-contain group-hover:scale-105 transition-transform bg-white rounded-xl px-2 py-1"
+              referrerPolicy="no-referrer"
+            />
+            <div className="flex items-center gap-2 text-emerald-400 font-bold mt-2">
+              <span className="flex h-3 w-3 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+              </span>
+              100% Safe & Verified
+            </div>
+          </div>
+        </a>
+
+        {/* Trustpilot Badge */}
+        <a 
+          href="https://www.trustpilot.com/review/orbitxmcn.digital" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="block bg-zinc-900 p-6 rounded-3xl border border-zinc-800 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/10 transition-all group"
+        >
+          <div className="flex flex-col items-center gap-4">
+            <p className="text-zinc-400 text-sm font-medium tracking-widest uppercase">Verified Reviews</p>
+            <img 
+              src="https://images.seeklogo.com/logo-png/47/1/trustpilot-stars-logo-png_seeklogo-477110.png" 
+              alt="Trustpilot Logo" 
+              className="h-10 object-contain group-hover:scale-105 transition-transform"
+              referrerPolicy="no-referrer"
+            />
+            <div className="flex items-center gap-2 text-emerald-400 font-bold mt-2">
+              <span className="flex h-3 w-3 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+              </span>
+              5-Star Rated
             </div>
           </div>
         </a>
